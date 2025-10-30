@@ -1,6 +1,6 @@
 <header>
   <div class="logo-titulo">
-    <img src="/Viaje-APP/componentes/imagenes/Logo.png" alt="Logo Remolinos Tours" width="100">
+    <img src="/viaje/viaje/Viaje-APP/componentes/imagenes/Logo.png" alt="Logo Remolinos Tours" width="100">
     <h1>Remolinos Tours</h1>
   </div>
   <nav>
