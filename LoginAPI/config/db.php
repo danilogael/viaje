@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$dbname = 'logInNacho';
+$dbname = 'agencia_de_viajes';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 

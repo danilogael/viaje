@@ -3,9 +3,9 @@ header('Content-Type: application/json');
 require_once 'auth.php';
 require_once './config/db.php';
 
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['id_usuario'];
 
-$stmt= $conn->prepare('SELECT id, first_name, last_name, middle_name, phone,email FROM users WHERE id = ?');
+$stmt= $conn->prepare('SELECT id_usuario,Nombre_user,apellido_paterno,apellido_materno,	correo_electronico,	contraseña,	numero_ telefono,id_rol,	 FROM users WHERE id = ?');
 $stmt->bind_param('i', $userId);
 $stmt->execute();
 $result = $stmt->get_result();

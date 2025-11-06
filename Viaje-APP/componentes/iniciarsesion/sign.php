@@ -23,11 +23,9 @@ if (isset($_SESSION[''])) { /* aqui debo sustituir el user_id */
  <div class="container">
 
     <div class="welcome-panel">
-        <i class="fas fa-gem welcome-icon"></i>
         <h1>Welcome Back!</h1>
-        <p>Bienvenido de nuevo, inicia sesión para continuar con tu experiencia profesional.</p>
+        <p>Bienvenido de nuevo, inicia sesión para ofrecerte una mejor experiencia.</p>
     </div>
-
     <div class="login-panel">
         <h2>Iniciar Sesión</h2>
         <form id="loginForm">
@@ -35,14 +33,10 @@ if (isset($_SESSION[''])) { /* aqui debo sustituir el user_id */
                 <i class="fas fa-envelope"></i>
                 <input type="email" id="email" name="email" placeholder="Correo" required>
             </div>
-
-          
             <div class="input-group">
                 <i class="fas fa-phone"></i>
                 <input type="tel" id="phone" name="phone" placeholder="Teléfono" required>
             </div>
-           
-
             <div class="input-group">
                 <i class="fas fa-lock"></i>
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
@@ -60,7 +54,7 @@ if (isset($_SESSION[''])) { /* aqui debo sustituir el user_id */
             </div>
         </div>
 
-        <p>¿No tienes cuenta? <a href="componentes/Register/Register.php">Regístrate aquí</a></p>
+        <p>¿No tienes cuenta? <a href="/viaje/viaje/Viaje-APP/componentes/Register/Register.php">Regístrate aquí</a></p>
     </div>
 </div>
   <script src="/Viaje-APP/componentes/js/header.js"></script>
