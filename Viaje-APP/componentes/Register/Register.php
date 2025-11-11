@@ -2,19 +2,19 @@
 session_start();
 
 if (isset($_SESSION['user'])) {
-  header("Location: ../ViewData/ViewData.php");
+  header("Location: /Viaje-APP/default.php");
   exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   header('Content-Type: application/json');
 
-  $first_name = $_POST['first_name'] ?? '';
-  $last_name = $_POST['last_name'] ?? '';
-  $middle_name = $_POST['middle_name'] ?? '';
+  $first_name = $_POST['nombre_usuario'] ?? '';
+  $last_name = $_POST['apellido_paterno'] ?? '';
+  $middle_name = $_POST['apellido_materno'] ?? '';
   $email = $_POST['email'] ?? '';
-  $password = $_POST['password'] ?? '';
-  $phone = $_POST['phone'] ?? '';
+  $password = $_POST['contraseña'] ?? '';
+  $phone = $_POST['telefono'] ?? '';
 
   if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/', $password)) {
     echo json_encode([
@@ -34,10 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <title>Registro</title>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
+     <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos_footer/estilos_footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+  <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
   <div class="container">
     <div class="welcome-panel">
       <div class="welcome-icon"><i class="fas fa-user-plus"></i></div>
@@ -84,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p>¿Ya tienes cuenta? <a href="/Viaje-APP/componentes/iniciarsesion/sign.php">Inicia sesión aquí</a></p>
     </div>
   </div>
+  <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
 </body>
 
 </html>

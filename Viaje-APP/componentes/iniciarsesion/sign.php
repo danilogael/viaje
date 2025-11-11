@@ -1,7 +1,7 @@
-<?php
+  <?php
 session_start();
-if (isset($_SESSION[''])) { /* aqui debo sustituir el user_id */
-    header("Location: components/ViewData/ViewData.php");
+if (isset($_SESSION['id_usuario'])) { /* aqui debo sustituir el user_id */
+    header("Location: Viaje-APP/default.php");
     exit;
 }
 ?>
