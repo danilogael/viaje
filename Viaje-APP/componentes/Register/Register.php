@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user'])) {
-  header("Location: /Viaje-APP/default.php");
+if (isset($_SESSION['usuarios'])) {
+  header("Location: ../Viaje-APP/default.php");
   exit;
 }
 
@@ -34,14 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <title>Registro</title>
-  <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
-     <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos_footer/estilos_footer.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-  <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
   <div class="container">
     <div class="welcome-panel">
       <div class="welcome-icon"><i class="fas fa-user-plus"></i></div>
@@ -88,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p>¿Ya tienes cuenta? <a href="/Viaje-APP/componentes/iniciarsesion/sign.php">Inicia sesión aquí</a></p>
     </div>
   </div>
-  <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
 </body>
 
 </html>
