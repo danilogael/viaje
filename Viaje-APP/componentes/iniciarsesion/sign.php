@@ -1,4 +1,4 @@
-  <?php
+<?php
 session_start();
 if (isset($_SESSION['id_usuario'])) { /* aqui debo sustituir el user_id */
     header("Location: Viaje-APP/default.php");
