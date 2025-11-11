@@ -39,7 +39,7 @@ loginForm.addEventListener('submit', async (e) => {
 
     const formData = new FormData(loginForm);
     try {
-        const res = await fetch('../LoginAPI/login.php', {
+       const res = await fetch('../../LoginAPI/login.php', {
             method: 'POST',
             body: formData
         });
@@ -50,11 +50,11 @@ loginForm.addEventListener('submit', async (e) => {
             Swal.fire({
                 icon: 'success',
                 title: '¡Bienvenido!',
-                text: `Hola ${data.user.first_name}`,
+              text: `Hola ${data.user.nombre_usuario}`,
                 timer: 1500,
                 showConfirmButton: false
             }).then(() => {
-                window.location.href = "components/ViewData/ViewData.php";
+                window.location.href = "/viaje/viaje/Viaje-APP/default.php";
             });
         } else {
             let attempts = parseInt(localStorage.getItem('attempts') || '0') + 1;
@@ -88,4 +88,7 @@ loginForm.addEventListener('submit', async (e) => {
             text: 'No se pudo conectar con el servidor'
         });
     }
+});
+window.addEventListener("load", () => {
+    document.getElementById("loginForm").reset();
 });

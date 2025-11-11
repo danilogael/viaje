@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/style.css">
 </head>
 <body>
- 
+  
   <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
 <div class="container">
   <h1>Beatiful<br>places to explorer </h1>

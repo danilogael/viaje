@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['id_usuario'])) { /* aqui debo sustituir el user_id */
+if (isset($_SESSION['id_usuario'])) { 
     header("Location: Viaje-APP/default.php");
     exit;
 }
@@ -35,11 +35,11 @@ if (isset($_SESSION['id_usuario'])) { /* aqui debo sustituir el user_id */
             </div>
             <div class="input-group">
                 <i class="fas fa-phone"></i>
-                <input type="tel" id="phone" name="phone" placeholder="Teléfono" required>
+                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
             </div>
             <div class="input-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required>
             </div>
 
             <button type="submit" id="submitBtn">Entrar</button>
