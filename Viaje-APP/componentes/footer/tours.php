@@ -9,8 +9,6 @@
 
   <section id="tours" 
 
-      <h2 style="text-align: center; color: #ffd54f; font-size: 2.2em;">Tours</h2>
-
       <p>
         Los tours son la mejor forma de aprovechar al máximo tu viaje, permitiéndote conocer los
         principales atractivos turísticos de cada destino.

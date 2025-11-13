@@ -22,3 +22,4 @@
   <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
 </body>
 </html>
+

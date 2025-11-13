@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
             showConfirmButton: false,
             confirmButtonColor: '#1abc9c'
         }).then(() => {
-            window.location.href = '../../index.php';
+            window.location.href = 'viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php';
         });
     </script>";
     exit;
@@ -24,108 +24,36 @@ if (!isset($_SESSION['user_id'])) {
 <title>Perfil de Usuario</title>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="ViewData.css">
-<style>
-* { 
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center; 
-  align-items: center;     
-  background: linear-gradient(-45deg, #2c3e50, #34495e, #5d6d7e, #1abc9c);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-.container {
-  width: 90%;
-  max-width: 500px;
-}
-
-.card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  overflow: hidden;
-}
-
-.card-header {
-  background: rgba(255,255,255,0.1);
-  color: #ecf0f1;
-  text-align: center;
-  padding: 15px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.card-body {
-  padding: 20px;
-  color: #ecf0f1;
-}
-
-#userData p {
-  margin: 8px 0;
-  font-size: 15px;
-}
-
-.btn {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin-top: 15px;
-  background-color: rgba(26,188,156,0.8);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: rgba(26,188,156,1);
-}
-</style>
+<link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
+   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos_footer/estilos_footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+    <h1>holaaaaaaaaaaaaaaaaa</h1>
+   <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
 <div class="container">
   <div class="card">
     <div class="card-header">Mi Perfil</div>
     <div class="card-body">
       <div id="userData">
-       
       </div>
       <button id="logoutBtn" class="btn">Cerrar Sesión</button>
     </div>
   </div>
 </div>
-
-<script>
-async function loadUser() {
+<script> 
+  async function loadUser() {
     try {
-        const res = await fetch('../../../LoginAPI/getUser.php');
+        const res = await fetch('/viaje/viaje/LoginAPI/getUser.php');
         const data = await res.json();
 
         if (data.success) {
             const user = data.user;
             document.getElementById('userData').innerHTML = `
                 <p><strong>Nombre:</strong> ${user.first_name}</p>
-                <p><strong>Apellido Paterno:</strong> ${user.last_name}</p>
-                <p><strong>Apellido Materno:</strong> ${user.middle_name || '-'}</p>
+                <p><strong>Segundo Nombre:</strong> ${user.middle_name || '-'}</p>
+                <p><strong>Apellido:</strong> ${user.last_name}</p>
                 <p><strong>Correo:</strong> ${user.email}</p>
-                <p><strong>phone:</strong> ${user.phone}</p>
             `;
         } else {
             Swal.fire({
@@ -149,12 +77,12 @@ loadUser();
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {
     try {
-        const res = await fetch('../../../LoginAPI/logOut.php');
+        const res = await fetch('/viaje/viaje/LoginAPI/logOut.php');
         const data = await res.json();
 
         if (data.success) {
-                window.location.href = '../../index.php';
-            
+                window.location.href = "/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php";
+          
         } else {
             Swal.fire({
                 icon: 'error',
@@ -173,5 +101,6 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
     }
 });
 </script>
+ <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
 </body>
 </html>

@@ -1,122 +1,139 @@
-/* 
-   RESETEO GLOBAL
-
-El selector * significa "todos los elementos" del HTML.
-Esto se usa para eliminar los márgenes y rellenos (padding) que los navegadores
-añaden automáticamente, y así tener un control total del diseño.
-
-box-sizing: border-box;  
-Hace que el tamaño total de un elemento (width y height) incluya el padding
-y el borde. Esto facilita el diseño porque evita que los elementos se salgan
-de su tamaño calculado.
-*/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-/* 
-
-   HEADER (ENCABEZADO DE LA PÁGINA)
-
-El header suele contener el logo, el nombre de la empresa y el menú principal.
-Aquí se le da color, se usa flexbox para acomodar los elementos, y se centra todo.
-*/
+/* --- Header general --- */
 header {
-  background-color: #ffffff; /* Color de fondo blanco */
-  color: rgb(0, 0, 0); /* Color del texto en negro */
-  padding: 15px 30px; /* Espaciado interno: arriba/abajo 15px, lados 30px */
-  display: flex; /* Activa el modo "flexbox" para ordenar los hijos horizontalmente */
-  justify-content: space-between; /* Mueve los elementos a los extremos (logo izquierda, menú derecha) */
-  align-items: center; /* Centra verticalmente los elementos dentro del header */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
 }
 
-
-/* 
-
-   LOGO-TITULO (CONTENEDOR DEL LOGO Y EL NOMBRE)
-
-Este div agrupa el logo y el título (nombre de la agencia).
-display:flex los pone en la misma línea.
-gap agrega espacio entre ellos.
-*/
+/* --- Logo y nombre --- */
 .logo-titulo {
-  display: flex; /* Coloca los elementos (logo + título) uno al lado del otro */
-  align-items: center; /* Centra verticalmente ambos elementos */
-  gap: 15px; /* Espacio horizontal entre el logo y el texto */
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-
-/* 
-   LOGO (IMAGEN DEL LOGO)
-Aquí se define el tamaño del logo.
-object-fit: cover evita que la imagen se deforme.
-*/
-.logo {
-  width: 60px; /* Ancho del logo */
-  height: 60px; /* Alto del logo */
-  object-fit: cover; /* Ajusta la imagen al tamaño sin deformarla */
+.logo-titulo img {
+  width: 90px;
+  height: auto;
 }
 
-
-/* 
-
-   TEXTO DEL TÍTULO (H1)
-
-Se aumenta el tamaño y se pone en negritas para resaltar el nombre de la agencia.
-*/
 .logo-titulo h1 {
-  font-size: 25px; /* Tamaño de la fuente */
-  font-weight: bold; /* Texto en negritas */
+  font-size: 22px;
+  font-weight: 700;
+  color: #2b2b2b;
 }
 
-
-/* 
-
-   MENÚ DE NAVEGACIÓN (LISTA DE ENLACES)
-
-.nav-links es el contenedor <ul> donde están los <li> del menú.
-Se eliminan los puntos (list-style:none), se alinean en fila y se separan con gap.
-*/
+/* --- Navegación principal --- */
 .nav-links {
-  list-style: none; /* Quita los puntos de lista */
-  display: flex; /* Coloca los enlaces horizontalmente */
-  gap: 30px; /* Espacio entre cada enlace */
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
-
-/* 
-
-   ENLACES DEL MENÚ (A)
-
-Se cambian los colores, se quita el subrayado y se añade una transición
-para que el cambio de color sea suave cuando pasas el mouse.
-*/
 .nav-links a {
-  color: rgb(0, 0, 0); /* Color del texto negro */
-  text-decoration: none; /* Quita el subrayado del enlace */
-  font-weight: 500; /* Peso de fuente medio */
-  transition: color 0.3s; /* Animación suave del color al pasar el cursor */
-  font-weight: bold; /* Se refuerza el grosor del texto */
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
-
-/* 
-
-   BOTÓN MENU-TOGGLE
-
-Este botón sirve normalmente para abrir el menú en pantallas pequeñas (celulares).
-border:none y background:none lo dejan transparente.
-cursor:pointer hace que al pasar el ratón cambie al ícono de mano.
-*/
-.menu-toggle {
-  border: none; /* Sin borde */
-  background: none; /* Sin fondo */
-  font-size: 1.5rem; /* Tamaño de ícono grande (1.5 veces el tamaño base) */
-  cursor: pointer; /* Cambia el puntero del ratón a "mano" */
-  color: rgb(0, 0, 0); /* Color negro */
+.nav-links a:hover {
+  color: #0071c2; /* azul tipo Booking */
 }
 
+/* --- Menú de usuario --- */
+.user-menu {
+  position: relative;
+}
 
+.user-icon {
+  font-size: 28px;
+  color: #0071c2;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.user-icon:hover {
+  transform: scale(1.1);
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 42px;
+  right: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  list-style: none;
+  width: 220px;
+  padding: 10px 0;
+}
+
+.dropdown li {
+  padding: 10px 18px;
+}
+
+.dropdown li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+
+.dropdown li a:hover {
+  background: #f3f4f6;
+}
+
+.dropdown li strong {
+  color: #0071c2;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Mostrar menú al pasar el mouse en escritorio */
+@media (min-width: 768px) {
+  .user-menu:hover .dropdown {
+    display: block;
+  }
+}
+
+/* --- Móvil --- */
+@media (max-width: 767px) {
+  header {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Menú usuario clic móvil */
+  .user-menu:hover .dropdown {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #0071c2;
+  }
+}

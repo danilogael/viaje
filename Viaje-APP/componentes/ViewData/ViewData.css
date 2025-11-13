@@ -1,0 +1,99 @@
+/* Contenedor principal */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 100px 20px;
+  background: #f6f7fb;
+  min-height: 100vh;
+}
+
+/* Tarjeta del perfil */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  width: 380px;
+  padding: 30px 25px;
+  transition: all 0.3s ease;
+  border: 1px solid #e6e8ec;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Encabezado */
+.card-header {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #2b2b2b;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.card-header::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #00a6de;
+  border-radius: 2px;
+  margin: 8px auto 0;
+}
+
+/* Cuerpo */
+.card-body {
+  font-size: 15px;
+  color: #444;
+}
+
+/* Datos del usuario */
+#userData p {
+  margin: 12px 0;
+  line-height: 1.5;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 8px;
+}
+
+#userData p strong {
+  color: #00a6de;
+  font-weight: 600;
+  display: inline-block;
+  width: 140px;
+}
+
+/* Botón */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  background: #00a6de;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #008fbe;
+  transform: translateY(-2px);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    padding: 25px 20px;
+  }
+
+  #userData p strong {
+    width: 120px;
+  }
+}
