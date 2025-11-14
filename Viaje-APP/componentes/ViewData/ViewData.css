@@ -1,99 +1,121 @@
-/* Contenedor principal */
+/* ===========================================
+   ESTILO GENERAL TIPO BOOKING / TRIVAGO
+   =========================================== */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f7f8fa;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Contenedor general con menú + contenido */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 100px 20px;
-  background: #f6f7fb;
-  min-height: 100vh;
+    display: flex;
+    width: 100%;
+    max-width: 1300px;
+    margin: 120px auto 60px auto;
+    gap: 40px;
 }
 
-/* Tarjeta del perfil */
+/* ===========================================
+   MENÚ LATERAL
+   =========================================== */
+
+.sidebar {
+    width: 260px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.sidebar li i {
+    font-size: 18px;
+}
+
+.sidebar li:hover {
+    background: #eef6ff;
+}
+
+.sidebar .active {
+    background: #d9ecff;
+    color: #1a73e8;
+}
+
+/* ===========================================
+   CONTENIDO (ÁREA DERECHA)
+   =========================================== */
+
 .card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  width: 380px;
-  padding: 30px 25px;
-  transition: all 0.3s ease;
-  border: 1px solid #e6e8ec;
+    flex: 1;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-}
-
-/* Encabezado */
 .card-header {
-  text-align: center;
-  font-size: 22px;
-  font-weight: 700;
-  color: #2b2b2b;
-  margin-bottom: 25px;
-  position: relative;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
-.card-header::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: #00a6de;
-  border-radius: 2px;
-  margin: 8px auto 0;
+.subtitle {
+    color: #777;
+    margin-bottom: 25px;
 }
 
-/* Cuerpo */
-.card-body {
-  font-size: 15px;
-  color: #444;
+.info-group {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
 }
 
-/* Datos del usuario */
-#userData p {
-  margin: 12px 0;
-  line-height: 1.5;
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 8px;
+.info-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
-#userData p strong {
-  color: #00a6de;
-  font-weight: 600;
-  display: inline-block;
-  width: 140px;
+.info-value {
+    font-size: 16px;
+    color: #333;
 }
 
-/* Botón */
+/* Botón cerrar sesión */
 .btn {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin-top: 25px;
-  background: #00a6de;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    background-color: #1a73e8;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    margin-top: 30px;
 }
 
 .btn:hover {
-  background: #008fbe;
-  transform: translateY(-2px);
-}
-
-/* Responsivo */
-@media (max-width: 480px) {
-  .card {
-    width: 100%;
-    padding: 25px 20px;
-  }
-
-  #userData p strong {
-    width: 120px;
-  }
+    background-color: #0f5ec4;
 }

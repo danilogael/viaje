@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-    header("Location:/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php");
+   header("Location:/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php");
     exit;
 }
 ?>
@@ -104,9 +104,9 @@ loginForm.addEventListener('submit', async (e) => {
     const formData = new FormData(loginForm);
     try {
         const res = await fetch('/viaje/viaje/LoginAPI/login.php', {
-            method: 'POST',
-            body: formData
-        });
+    method: 'POST',
+    body: formData
+});
         const data = await res.json();
 
         if(data.success){

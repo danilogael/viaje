@@ -2,7 +2,7 @@
 session_start();
 // require 'database.php'; // Descomenta cuando tengas la DB
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['user_id'])) {
   header("Location:/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php");
   exit;
 }
@@ -85,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p>¿Ya tienes cuenta? <a href="/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php">Inicia sesión aquí</a></p>
     </div>
   </div>
-
   <script>
     const registerForm = document.getElementById('registerForm');
     const passwordInput = document.getElementById('password');
@@ -131,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       const formData = new FormData(registerForm);
 
       try {
-        const res = await fetch('viaje/viaje/LoginAPI/register.php', {
+        const res = await fetch('/viaje/viaje/LoginAPI/register.php', {
   method: 'POST',
   body: formData
 });

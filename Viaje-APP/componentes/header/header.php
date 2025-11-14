@@ -19,7 +19,6 @@ if (session_status() === PHP_SESSION_NONE) {
       <li><a href="/viaje/viaje/Viaje-APP/componentes/paquetes/paquete.php">Paquetes</a></li>
       <li><a href="/viaje/viaje/Viaje-APP/componentes/Planea/planea.php">Planea tu viaje</a></li>
       <li><a href="/viaje/viaje/Viaje-APP/componentes/ofertas/ofertas.php">Ofertas</a></li>
-      <li><a href="/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php">Cuenta</a></li>
       <li><a href="#">Idioma y Moneda</a></li>
 
       <?php if (isset($_SESSION['user_id'])): ?>
@@ -33,7 +32,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
           <!-- Menú desplegable que aparece al pasar el mouse sobre el ícono -->
           <ul class="dropdown">
-            <li><strong>Cuenta</strong></li>
+            <li><a href="/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php">Cuenta</a></li>
             <li><a href="#">Información personal</a></li>
             <li><a href="#">Seguridad de la cuenta</a></li>
             <li><a href="#">Mis viajes</a></li>

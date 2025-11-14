@@ -29,15 +29,35 @@ if (!isset($_SESSION['user_id'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <h1>holaaaaaaaaaaaaaaaaa</h1>
    <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
 <div class="container">
+
+  <!-- ==== MENÚ LATERAL ==== -->
+  <div class="sidebar">
+    <ul>
+      <li class="active"><i class="fa-solid fa-user"></i> Información personal</li>
+      <li><i class="fa-solid fa-lock"></i> Seguridad de la cuenta</li>
+      <li><i class="fa-solid fa-heart"></i> Favoritos</li>
+      <li><i class="fa-solid fa-clock-rotate-left"></i> Vistos recientemente</li>
+      <li><i class="fa-solid fa-suitcase"></i> Reservaciones</li>
+      <li><i class="fa-solid fa-magnifying-glass"></i> Preferencias de búsqueda</li>
+      <li><i class="fa-solid fa-bell"></i> Notificaciones</li>
+      <li><i class="fa-solid fa-circle-question"></i> Ayuda y soporte</li>
+    </ul>
+  </div>
+
+  <!-- ==== CONTENIDO DERECHO ==== -->
   <div class="card">
-    <div class="card-header">Mi Perfil</div>
-    <div class="card-body">
-      <div id="userData">
-      </div>
+      <div class="card-header">Información personal</div>
+      <div class="subtitle">Revisa o modifica tu información personal</div>
+
+      <div id="userData"></div>
+
       <button id="logoutBtn" class="btn">Cerrar Sesión</button>
+  </div>
+
+</div>
+
     </div>
   </div>
 </div>
