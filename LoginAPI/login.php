@@ -1,8 +1,7 @@
 <?php
 header('Content-type: application/json');
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/viaje/viaje/LoginAPI/config/db.php';
-
+require_once './config/db.php';
 
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';

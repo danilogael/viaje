@@ -2,7 +2,7 @@
 session_start();
 // require 'database.php'; // Descomenta cuando tengas la DB
 
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user'])) {
   header("Location:/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php");
   exit;
 }
