@@ -48,7 +48,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
       <?php else: ?>
         <li><a href="/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php">Iniciar sesión</a></li>
-        <li><a href="/viaje/viaje/Viaje-APP/componentes/Register/Register.php">Registrarse</a></li>
       <?php endif; ?>
     </ul>
   </nav>

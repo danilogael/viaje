@@ -1,19 +1,33 @@
 <?php
-header('Content-Type: application/json');
-require_once 'auth.php';
-require_once './config/db.php';
+header('Content-Type: application/json; charset=utf-8');
+require __DIR__ . '/config/db.php';
+session_start();
 
-$userId = $_SESSION['user_id'];
-
-$stmt= $conn->prepare('SELECT id, first_name, last_name, middle_name, email FROM users WHERE id = ?');
-$stmt->bind_param('i', $userId);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if($user = $result->fetch_assoc()){
-    echo json_encode(['success' => true, 'user' => $user]);
-}else{
-    echo json_encode(['success' => false, 'message' => 'User not found']);
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['success' => false, 'message' => 'No autenticado']);
+    exit;
 }
 
-?>
+$id = intval($_SESSION['user_id']);
+
+try {
+    $stmt = $conexion->prepare("SELECT id, nombre, apellido_paterno, apellido_materno, correo, telefono, rol 
+                                FROM usuarios WHERE id = ? LIMIT 1");
+    $stmt->execute([$id]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$row) {
+        echo json_encode(['success' => false, 'message' => 'Usuario no encontrado']);
+        exit;
+    }
+
+    echo json_encode([
+        'success' => true,
+        'user' => $row
+    ]);
+    exit;
+
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Error interno']);
+    exit;
+}

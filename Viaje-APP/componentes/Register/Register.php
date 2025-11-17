@@ -1,48 +1,16 @@
-<?php
-session_start();
-// require 'database.php'; // Descomenta cuando tengas la DB
-
-if (isset($_SESSION['user'])) {
-  header("Location:/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php");
-  exit;
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  header('Content-Type: application/json');
-
-  $first_name = $_POST['first_name'] ?? '';
-  $last_name = $_POST['last_name'] ?? '';
-  $middle_name = $_POST['middle_name'] ?? '';
-  $email = $_POST['email'] ?? '';
-  $password = $_POST['password'] ?? '';
-
-  if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/', $password)) {
-    echo json_encode([
-      'success' => false,
-      'message' => 'La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter especial.'
-    ]);         
-    exit;
-  }
-
-  echo json_encode(['success' => true]);
-  exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <title>Registro</title>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
-   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos_footer/estilos_footer.css">
+  <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos_footer/estilos_footer.css">
 </head>
-
 <body>
-   <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
+  <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
+
   <div class="container">
     <div class="welcome-panel">
       <div class="welcome-icon"><i class="fas fa-user-plus"></i></div>
@@ -55,23 +23,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form id="registerForm">
         <div class="input-group">
           <i class="fas fa-user"></i>
-          <input type="text" id="first_name" name="first_name" placeholder="Nombre" required>
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
         </div>
         <div class="input-group">
           <i class="fas fa-user"></i>
-          <input type="text" id="last_name" name="last_name" placeholder="Apellido Paterno" required>
+          <input type="text" id="apellido_paterno" name="apellido_paterno" placeholder="Apellido Paterno" required>
         </div>
         <div class="input-group">
           <i class="fas fa-user"></i>
-          <input type="text" id="middle_name" name="middle_name" placeholder="Apellido Materno">
+          <input type="text" id="apellido_materno" name="apellido_materno" placeholder="Apellido Materno" required>
         </div>
         <div class="input-group">
           <i class="fas fa-envelope"></i>
-          <input type="email" id="email" name="email" placeholder="Correo" required>
+          <input type="email" id="correo" name="correo" placeholder="Correo" required minlength="10">
+        </div>
+        <div class="input-group">
+          <i class="fas fa-phone"></i>
+          <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required >
         </div>
         <div class="input-group">
           <i class="fas fa-lock" id="togglePassword"></i>
-          <input type="password" id="password" name="password" placeholder="Contraseña" required minlength="6">
+          <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required minlength="6">
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="Confirmar Contraseña" required minlength="6">
         </div>
         <div id="password-info">
           <span id="charLength">6+ caracteres</span> |
@@ -85,9 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p>¿Ya tienes cuenta? <a href="/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php">Inicia sesión aquí</a></p>
     </div>
   </div>
+
   <script>
     const registerForm = document.getElementById('registerForm');
-    const passwordInput = document.getElementById('password');
+    const passwordInput = document.getElementById('contraseña');
     const togglePassword = document.getElementById('togglePassword');
 
     const checklist = {
@@ -105,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       togglePassword.classList.toggle('fa-eye-slash');
     });
 
+    // Validación visual de contraseña
     passwordInput.addEventListener('input', () => {
       const val = passwordInput.value;
       checklist.charLength.style.color = val.length >= 6 ? '#1abc9c' : '#e74c3c';
@@ -116,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     registerForm.addEventListener('submit', async e => {
       e.preventDefault();
+
       const val = passwordInput.value;
       const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
       if (!regex.test(val)) {
@@ -131,11 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       try {
         const res = await fetch('/viaje/viaje/LoginAPI/register.php', {
-  method: 'POST',
-  body: formData
-});
-
-
+          method: 'POST',
+          body: formData
+        });
 
         const data = await res.json();
 
@@ -163,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
     });
   </script>
-   <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
-</body>
 
+  <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
+</body>
 </html>
