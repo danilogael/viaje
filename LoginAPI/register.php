@@ -38,6 +38,12 @@ if ($stmt->fetch()) {
     echo json_encode(["success" => false, "message" => "El correo ya está registrado"]);
     exit;
 }
+$stmt = $conexion->prepare("SELECT id FROM usuarios WHERE telefono = ?");
+$stmt->execute([$telefono]);
+if ($stmt->fetch()) {
+    echo json_encode(["success" => false, "message" => "El telefono ya está registrado"]);
+    exit;
+}
 
 // insertar usuario
 $verify_token = bin2hex(random_bytes(16));

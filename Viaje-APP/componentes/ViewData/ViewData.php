@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
   <li><button class="menu-btn" data-section="reservas"><i class="fa-solid fa-suitcase"></i> Reservaciones</button></li>
   <li><button class="menu-btn" data-section="preferencias"><i class="fa-solid fa-magnifying-glass"></i> Preferencias</button></li>
   <li><button class="menu-btn" data-section="notificaciones"><i class="fa-solid fa-bell"></i> Notificaciones</button></li>
-  <li><button class="menu-btn" data-section="ayuda"><i class="fa-solid fa-circle-question"></i> Ayuda</button></li>
+  <li><button class="menu-btn" data-section="ayuda_contacto"><i class="fa-solid fa-circle-question"></i> Ayuda y Contacto</button></li>
 </ul>
   </aside>
 
@@ -56,9 +56,6 @@ if (!isset($_SESSION['user_id'])) {
       <div id="userData"><p>Cargando...</p></div>
 
       <div class="actions">
-        <button class="btn-edit" onclick="editarCampo('nombre')">Editar nombre</button>
-        <button class="btn-edit" onclick="editarCampo('apellido_paterno')">Editar apellido paterno</button>
-        <button class="btn-edit" onclick="editarCampo('apellido_materno')">Editar apellido materno</button>
         <button class="btn-edit" onclick="editarCampo('correo')">Editar correo</button>
         <button class="btn-edit" onclick="editarCampo('telefono')">Editar teléfono</button>
       </div>
@@ -93,6 +90,35 @@ if (!isset($_SESSION['user_id'])) {
       <h2>Reservaciones</h2>
       <p class="subtitle">Tus reservas aparecerán aquí.</p>
       <div id="resList">No hay reservas.</div>
+    </section>
+ <!-- PREFERENCIAS  -->
+    <section id="preferencias" class="card hidden">
+      <h2>Preferencias</h2>
+      <p class="subtitle">Tus preferencias aparecerán aquí.</p>
+      <div id="resList">No hay preferencias.</div>
+    </section>
+     <!-- NOTIFICACIONES -->
+    <section id="notificaciones" class="card hidden">
+      <h2>Notificaciones</h2>
+      <p class="subtitle">Tus notificaciones aparecerán aquí.</p>
+      <div id="resList">No hay notificaciones.</div>
+    </section>
+     <!--  AYUDA Y CONTACTO -->
+    <section id="ayuda_contacto" class="card hidden">
+      <h2>Contáctanos</h2>
+      <div class="container">
+    <form class="row g-3 mx-auto" style="max-width:700px;">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Tu nombre completo" required />
+      </div>
+      <div class="col-md-6">
+        <input type="email" class="form-control" placeholder="Tu correo" required />
+      </div>
+      <div class="col-12">
+        <textarea class="form-control" rows="4" placeholder="Mensaje" required></textarea>
+      </div>
+      <div class="col-12 text-center">
+        <button class="btn btn-primary px-4">Enviar</button>
     </section>
 
   </main>

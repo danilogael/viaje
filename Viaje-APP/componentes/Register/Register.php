@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos_footer/estilos_footer.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
 
 </head>
@@ -37,7 +39,7 @@
         </div>
         <div class="input-group">
           <i class="fas fa-envelope"></i>
-          <input type="email" id="correo" name="correo" placeholder="Correo" required minlength="10">
+          <input type="email" id="correo" name="correo" placeholder="Correo" required>
         </div>
         <div class="input-group">
           <i class="fas fa-phone"></i>
@@ -156,6 +158,29 @@
         });
       }
     });
+    
+  const input = document.querySelector("#telefono");
+
+  const iti = window.intlTelInput(input, {
+    initialCountry: "auto",
+    geoIpLookup: function(callback) {
+      fetch("https://ipapi.co/json")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("MX")); // Si falla, usa México
+    },
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+  });
+
+  // Validación al enviar el formulario
+  document.querySelector("form").addEventListener("submit", function(e) {
+    if (!iti.isValidNumber()) {
+      e.preventDefault();
+      alert("El número telefónico no es válido para el país seleccionado.");
+    }
+  });
+
+
   </script>
 
   <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>

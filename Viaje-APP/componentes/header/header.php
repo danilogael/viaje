@@ -44,7 +44,5 @@ if (session_status() === PHP_SESSION_NONE) {
     </ul>
   </nav>
 
-  <!-- Botón de menú (usado en versión móvil) -->
-  <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">☰</button>
   
 </header>
