@@ -64,6 +64,7 @@ header {
   transform: scale(1.1);
 }
 
+/* Dropdown oculto por defecto */
 .dropdown {
   display: none;
   position: absolute;
@@ -75,6 +76,18 @@ header {
   list-style: none;
   width: 220px;
   padding: 10px 0;
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.dropdown.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dropdown li {
@@ -98,13 +111,6 @@ header {
   margin-bottom: 5px;
 }
 
-/* Mostrar menú al pasar el mouse en escritorio */
-@media (min-width: 768px) {
-  .user-menu:hover .dropdown {
-    display: block;
-  }
-}
-
 /* --- Móvil --- */
 @media (max-width: 767px) {
   header {
@@ -123,11 +129,6 @@ header {
     display: flex;
   }
 
-  /* Menú usuario clic móvil */
-  .user-menu:hover .dropdown {
-    display: none;
-  }
-
   .menu-toggle {
     display: block;
     background: none;
@@ -135,5 +136,10 @@ header {
     font-size: 28px;
     cursor: pointer;
     color: #0071c2;
+  }
+
+  /* Evita que hover interfiera en móvil */
+  .user-menu:hover .dropdown {
+    display: none;
   }
 }

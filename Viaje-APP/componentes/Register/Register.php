@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos_footer/estilos_footer.css">
+
+
 </head>
 <body>
   <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
@@ -39,16 +41,23 @@
         </div>
         <div class="input-group">
           <i class="fas fa-phone"></i>
-          <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required >
+          <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required>
         </div>
-        <div class="input-group">
-          <i class="fas fa-lock" id="togglePassword"></i>
-          <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required minlength="6">
-        </div>
+
+        <!-- Contraseña -->
         <div class="input-group">
           <i class="fas fa-lock"></i>
-          <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="Confirmar Contraseña" required minlength="6">
+          <input type="password" class="password" name="contraseña" placeholder="Contraseña" required minlength="6">
+          <i class="fas fa-eye toggle-password"></i>
         </div>
+
+        <!-- Confirmar contraseña -->
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" class="password" name="confirmar_contraseña" placeholder="Confirmar Contraseña" required minlength="6">
+          <i class="fas fa-eye toggle-password"></i>
+        </div>
+
         <div id="password-info">
           <span id="charLength">6+ caracteres</span> |
           <span id="uppercase">Mayúscula</span> |
@@ -56,6 +65,7 @@
           <span id="number">Número</span> |
           <span id="special">Carácter especial</span>
         </div>
+
         <button type="submit">Registrarse</button>
       </form>
       <p>¿Ya tienes cuenta? <a href="/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php">Inicia sesión aquí</a></p>
@@ -64,9 +74,9 @@
 
   <script>
     const registerForm = document.getElementById('registerForm');
-    const passwordInput = document.getElementById('contraseña');
-    const togglePassword = document.getElementById('togglePassword');
-
+    const passwordInput = document.querySelector('input[name="contraseña"]');
+    
+    // Checklist visual
     const checklist = {
       charLength: document.getElementById('charLength'),
       uppercase: document.getElementById('uppercase'),
@@ -75,11 +85,18 @@
       special: document.getElementById('special')
     };
 
-    // Mostrar/ocultar contraseña
-    togglePassword.addEventListener('click', () => {
-      const type = passwordInput.type === 'password' ? 'text' : 'password';
-      passwordInput.type = type;
-      togglePassword.classList.toggle('fa-eye-slash');
+    // Mostrar/ocultar contraseñas
+    document.querySelectorAll('.toggle-password').forEach(eye => {
+      eye.addEventListener('click', () => {
+        const input = eye.previousElementSibling;
+        if(input.type === 'password'){
+          input.type = 'text';
+          eye.classList.add('fa-eye-slash');
+        } else {
+          input.type = 'password';
+          eye.classList.remove('fa-eye-slash');
+        }
+      });
     });
 
     // Validación visual de contraseña
@@ -92,12 +109,13 @@
       checklist.special.style.color = /[\W_]/.test(val) ? '#1abc9c' : '#e74c3c';
     });
 
+    // Enviar formulario
     registerForm.addEventListener('submit', async e => {
       e.preventDefault();
-
       const val = passwordInput.value;
       const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
-      if (!regex.test(val)) {
+
+      if(!regex.test(val)){
         Swal.fire({
           icon: 'warning',
           title: 'Contraseña inválida',
@@ -113,10 +131,9 @@
           method: 'POST',
           body: formData
         });
-
         const data = await res.json();
 
-        if (data.success) {
+        if(data.success){
           Swal.fire({
             icon: 'success',
             title: '¡Registro exitoso!',
@@ -131,7 +148,7 @@
             text: data.message || 'Error al registrarse'
           });
         }
-      } catch (err) {
+      } catch(err){
         Swal.fire({
           icon: 'error',
           title: 'Error',

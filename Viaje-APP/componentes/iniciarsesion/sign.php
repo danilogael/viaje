@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Login Profesional</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="sign.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
@@ -27,11 +27,12 @@
                 <i class="fas fa-envelope"></i>
                 <input type="email" id="email" name="correo" placeholder="Correo" required>
             </div>
+<div class="input-group">
+    <i class="fas fa-lock"></i>
+    <input type="password" id="password" name="contraseña" placeholder="Contraseña" required>
+    <i class="fas fa-eye" id="togglePassword" style="cursor:pointer"></i>
+</div>
 
-            <div class="input-group">
-                <i class="fas fa-lock"></i>
-                <input type="password" id="password" name="contraseña" placeholder="Contraseña" required>
-            </div>
 
             <button type="submit" id="submitBtn">Entrar</button>
         </form>
@@ -135,6 +136,15 @@ loginForm.addEventListener('submit', async e => {
             text: 'No se pudo conectar con el servidor'
         });
     }
+});
+
+const togglePassword = document.getElementById('togglePassword');
+const password = document.getElementById('password');
+
+togglePassword.addEventListener('click', () => {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    togglePassword.classList.toggle('fa-eye-slash'); // cambia el icono
 });
 </script>
 

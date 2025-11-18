@@ -36,16 +36,16 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="container">
   <aside class="sidebar">
-    <ul>
-      <li class="active" data-section="info"><i class="fa-solid fa-user"></i> Información personal</li>
-      <li data-section="seguridad"><i class="fa-solid fa-lock"></i> Seguridad</li>
-      <li data-section="favoritos"><i class="fa-solid fa-heart"></i> Favoritos</li>
-      <li data-section="recientes"><i class="fa-solid fa-clock-rotate-left"></i> Vistos recientemente</li>
-      <li data-section="reservas"><i class="fa-solid fa-suitcase"></i> Reservaciones</li>
-      <li data-section="preferencias"><i class="fa-solid fa-magnifying-glass"></i> Preferencias</li>
-      <li data-section="notificaciones"><i class="fa-solid fa-bell"></i> Notificaciones</li>
-      <li data-section="ayuda"><i class="fa-solid fa-circle-question"></i> Ayuda</li>
-    </ul>
+    <ul class="menu">
+  <li><button class="menu-btn active" data-section="info"><i class="fa-solid fa-user"></i> Información personal</button></li>
+  <li><button class="menu-btn" data-section="seguridad"><i class="fa-solid fa-lock"></i> Seguridad</button></li>
+  <li><button class="menu-btn" data-section="favoritos"><i class="fa-solid fa-heart"></i> Favoritos</button></li>
+  <li><button class="menu-btn" data-section="recientes"><i class="fa-solid fa-clock-rotate-left"></i> Vistos recientemente</button></li>
+  <li><button class="menu-btn" data-section="reservas"><i class="fa-solid fa-suitcase"></i> Reservaciones</button></li>
+  <li><button class="menu-btn" data-section="preferencias"><i class="fa-solid fa-magnifying-glass"></i> Preferencias</button></li>
+  <li><button class="menu-btn" data-section="notificaciones"><i class="fa-solid fa-bell"></i> Notificaciones</button></li>
+  <li><button class="menu-btn" data-section="ayuda"><i class="fa-solid fa-circle-question"></i> Ayuda</button></li>
+</ul>
   </aside>
 
   <main class="content">
@@ -99,9 +99,8 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
-
 <script>
-const GET_USER_URL = '/viaje/viaje/LoginAPI/getUser.php';
+  const GET_USER_URL = '/viaje/viaje/LoginAPI/getUser.php';
 const UPDATE_USER_URL = '/viaje/viaje/LoginAPI/updateUser.php';
 const CHANGE_PASS_URL = '/viaje/viaje/LoginAPI/changePassword.php';
 const LOGOUT_URL = '/viaje/viaje/LoginAPI/logOut.php';
@@ -112,17 +111,6 @@ document.getElementById('darkModeBtn').addEventListener('click',()=>{
   localStorage.setItem('darkMode', document.body.classList.contains('dark'));
 });
 if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark');}
-
-/* SIDEBAR */
-document.querySelectorAll('.sidebar li').forEach(li=>{
-  li.addEventListener('click',()=>{
-    document.querySelectorAll('.sidebar li').forEach(x=>x.classList.remove('active'));
-    li.classList.add('active');
-    document.querySelectorAll('.content .card').forEach(c=>c.classList.add('hidden'));
-    const target = document.getElementById(li.dataset.section);
-    if(target) target.classList.remove('hidden');
-  });
-});
 
 /* Cargar datos */
 async function loadUser(){
@@ -208,7 +196,26 @@ document.getElementById("logoutBtn").addEventListener("click",async()=>{
   await fetch(LOGOUT_URL);
   window.location.href="/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php";
 });
-</script>
+
+// ---- SIDEBAR FIX ----
+document.querySelectorAll('.menu-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        // Quitar activo a todos
+        document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Ocultar todas las secciones
+        document.querySelectorAll('.card').forEach(sec => sec.classList.add('hidden'));
+
+        // Mostrar la sección seleccionada
+        const section = btn.getAttribute('data-section');
+        document.getElementById(section).classList.remove('hidden');
+    });
+});
+
+  </script>
+<script src="/viaje/viaje/Viaje-APP/componentes/js/header.js"></script>
 
 </body>
 </html>

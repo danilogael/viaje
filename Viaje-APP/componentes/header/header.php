@@ -32,16 +32,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
           <!-- Menú desplegable que aparece al pasar el mouse sobre el ícono -->
           <ul class="dropdown">
-            <li><a href="/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php">Cuenta</a></li>
-            <li><a href="#">Información personal</a></li>
-            <li><a href="#">Seguridad de la cuenta</a></li>
-            <li><a href="#">Mis viajes</a></li>
-            <li><a href="#">Vistos recientemente</a></li>
-            <li><a href="#">Preferencias</a></li>
-            <li><a href="#">Notificaciones</a></li>
-            <li><a href="#">Ayuda y soporte</a></li>
-        
-            
+            <li><a href="/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php">Mi perfil</a></li>
+      
             <li><a href="/viaje/viaje/LoginAPI/logOut.php">Cerrar sesión</a></li>
           </ul>
         </li>
@@ -54,4 +46,5 @@ if (session_status() === PHP_SESSION_NONE) {
 
   <!-- Botón de menú (usado en versión móvil) -->
   <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">☰</button>
+  
 </header>
