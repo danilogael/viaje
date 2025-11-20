@@ -13,17 +13,7 @@
 
   <!-- SECCIÓN PRINCIPAL -->
   <section id="charter-carretero" 
-
-    <div style="background-color: rgba(0, 0, 0, 0.6);
-                padding: 40px;
-                border-radius: 10px;
-                max-width: 1000px;
-                margin: auto;">
-
-      <h2 style="text-align: center;
-                 font-size: 2.2em;
-                 color: #ffd54f;
-                 margin-bottom: 25px;">
+<h2 style="color: #002a69; text-align: center; font-size: 2em; margin-bottom: 20px;">
         Servicio de Carácter Carretero
       </h2>
 

@@ -6,7 +6,7 @@
   <title>Tours | Mi Agencia</title>
 </head>
 <body style="margin: 0;">
-
+<h2 style="color: #002a69; text-align: center; font-size: 2em; margin-bottom: 20px;"
   <section id="tours" 
 
       <p>

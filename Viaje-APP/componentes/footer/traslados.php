@@ -10,7 +10,7 @@
   <section id="traslados-renta" 
 
 
-      <h2 style="text-align: center; color: #ffd54f; font-size: 2.2em;">Traslados y Renta de Autos</h2>
+     <h2 style="color: #020069ff; text-align: center; font-size: 2em; margin-bottom: 20px;">Traslados y Renta de Autos</h2>
 
       <p>
         El servicio de traslados busca ofrecerte la mayor comodidad desde tu llegada al destino.
