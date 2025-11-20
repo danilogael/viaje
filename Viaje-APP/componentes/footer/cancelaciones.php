@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Cancelaciones | Remolinos Tours</title>
-  <link rel="stylesheet" href="AYUDA.css">
+  <link rel="stylesheet" href="footer_pag.css">
 </head>
 <body>
 <div class="container">

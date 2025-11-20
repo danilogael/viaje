@@ -9,7 +9,7 @@
 
   <section id="pasaporte" 
 
-      <h2 style="text-align: center; color: #ffd54f; font-size: 2.2em;">Documentación para el Pasaporte</h2>
+      <h2 style="color: #002a69; text-align: center; font-size: 2em; margin-bottom: 20px;">Documentación para el Pasaporte</h2>
 
       <p>Para realizar cualquier trámite relacionado con tu pasaporte, es necesario contar con los siguientes requisitos:</p>
 

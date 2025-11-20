@@ -37,10 +37,10 @@
     <div class="footer-section">
       <h3>Descubre</h3>
       <ul>
-        <li><a href="#">Ofertas de última hora</a></li>
-        <li><a href="#">Destinos populares</a></li>
-        <li><a href="#">Recomendaciones personalizadas</a></li>
-        <li><a href="#">Guías de viaje</a></li>
+        <li><a href="ofertas.php">Ofertas de última hora</a></li>
+        <li><a href="destinos.php">Destinos populares</a></li>
+        <li><a href="recomendaciones.php">Recomendaciones personalizadas</a></li>
+        <li><a href="guias.php">Guías de viaje</a></li>
       </ul>
     </div>
   </div>

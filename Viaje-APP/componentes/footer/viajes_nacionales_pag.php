@@ -1,6 +1,9 @@
-<section id="viajes-nacionales" style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; padding: 40px; background-color: #f9f9f9;">
-  <div style="max-width: 1000px; margin: auto;">
-    <h2 style="color: #00695c; text-align: center; font-size: 2em; margin-bottom: 20px;">Viajes Nacionales</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h2 style="color: #002a69; text-align: center; font-size: 2em; margin-bottom: 20px;">Viajes Nacionales</h2>
     <p>
       Los viajes nacionales comprenden todos aquellos recorridos dentro del territorio mexicano.
       México es un país de contrastes, lleno de historia, cultura, gastronomía y paisajes naturales
