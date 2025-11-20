@@ -36,7 +36,7 @@
         currencyBtn.textContent = currentCurrency;
 
         // Guardar en sesión vía PHP (fetch)
-        fetch('/viaje/viaje/Viaje-APP/componentes/admin/setCurrency.php', {
+        fetch('/viaje/viaje/LoginAPI/setCurrency.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: `currency=${currentCurrency}`

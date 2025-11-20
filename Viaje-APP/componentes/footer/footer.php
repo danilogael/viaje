@@ -3,6 +3,7 @@
     <div class="footer-section">
       <h3>Remolinos Tours</h3>
       <p>Viaja más allá del destino. Planea, compara y reserva experiencias únicas al mejor precio, con asistencia 24/7.</p>
+      <a href="reseñas.php">Reseñas</a>
       <div class="social-icons">
         <a href="https://www.facebook.com/share/1CsmFYrQYp/"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/remolinostours.ags/?hl=es-la&fbclid=IwY2xjawOAvUFleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAwzNTA2ODU1MzE3MjgAAR5pGP7x5jSoPsyZ2fCFRHxCE4y0ZWeN1tFGCXsSIN2RnHfuEcMLbVn32Bxqxg_aem_e4-g0BXwcnpGJDqqOdZnrw">
@@ -41,6 +42,7 @@
         <li><a href="destinos.php">Destinos populares</a></li>
         <li><a href="recomendaciones.php">Recomendaciones personalizadas</a></li>
         <li><a href="guias.php">Guías de viaje</a></li>
+        
       </ul>
     </div>
   </div>
