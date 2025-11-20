@@ -27,10 +27,10 @@
     <div class="footer-section">
       <h3>Ayuda</h3>
       <ul>
-        <li><a href="#">Centro de soporte</a></li>
-        <li><a href="#">Cancelaciones</a></li>
-        <li><a href="#">Política de privacidad</a></li>
-        <li><a href="#">Términos y condiciones</a></li>
+        <li><a href="centro_SO.html">Centro de soporte</a></li>
+        <li><a href="cancelaciones.html">Cancelaciones</a></li>
+        <li><a href="politica_PRIV.html">Política de privacidad</a></li>
+        <li><a href="terminos_CON.html">Términos y condiciones</a></li>
       </ul>
     </div>
 
