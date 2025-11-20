@@ -1,0 +1,297 @@
+/* --- Reset básico --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* --- Banner principal de Ofertas --- */
+.offer-banner {
+  background: linear-gradient(135deg, #0071c2, #0096ff);
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px 50px;
+  border-radius: 14px;
+  margin: 20px auto;
+  max-width: 1200px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.offer-banner h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.offer-banner p {
+  font-size: 18px;
+  margin-bottom: 35px;
+  line-height: 1.4;
+}
+
+/* --- Buscador estilo Booking --- */
+.search-offers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search-offers input[type="text"],
+.search-offers input[type="date"],
+.search-offers button {
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-offers input:focus {
+  border-color: #0071c2;
+  box-shadow: 0 0 8px rgba(0,113,194,0.3);
+}
+
+.search-offers button {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-offers button:hover {
+  background-color: #e14b50;
+  transform: translateY(-2px);
+}
+
+/* --- Dropdown de huéspedes --- */
+.guests-dropdown {
+  position: relative;
+  min-width: 180px;
+}
+
+#guests-btn {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #0071c2;
+  background-color: #fff;
+  color: #0071c2;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#guests-btn::after {
+  content: "\f078";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 14px;
+  color: #0071c2;
+}
+
+.guests-menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.guests-menu.active {
+  display: block;
+}
+
+.guest-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.guest-controls button {
+  padding: 6px 14px;
+  margin: 0 5px;
+  border: 1px solid #0071c2;
+  border-radius: 6px;
+  background: #fff;
+  color: #0071c2;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.guest-controls button:hover {
+  background-color: #0071c2;
+  color: #fff;
+}
+
+.guest-controls span {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* --- Lista de Ofertas --- */
+.offers-list {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.offers-list h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #0071c2;
+  font-weight: 700;
+}
+
+.offers-list p {
+  margin-bottom: 25px;
+  font-size: 16px;
+  color: #555;
+}
+
+.offer-item {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.offer-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+.offer-item div strong {
+  display: block;
+  color: #0071c2;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.offer-item div span {
+  display: block;
+  font-size: 14px;
+  color: #333;
+}
+
+.offer-item .price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ff5a5f;
+}
+
+/* --- FAQ estilo tarjetas --- */
+.faq-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.faq-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #0071c2;
+  font-weight: 700;
+}
+
+.faq-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.faq-item strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.faq-item p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* --- Botones y colores profesionales --- */
+button {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .search-offers {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .offer-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .offer-item .price {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .offer-banner h1 {
+    font-size: 28px;
+  }
+
+  .offer-banner p {
+    font-size: 16px;
+  }
+
+  .offers-list h2 {
+    font-size: 22px;
+  }
+
+  .faq-section h2 {
+    font-size: 22px;
+  }
+}

@@ -46,6 +46,7 @@
   </div>
 
   <div class="footer-bottom">
-    © 2025 Remolinos Tours · Inspirando viajes inolvidables 
+     Remolinos Tours forma parte de Remolinos Holdings Inc., líder mundial en viajes online y servicios relacionados.<br>
+    Copyright © 2025 Remolinos Tours. Todos los derechos reservados.
   </div>
 </footer>

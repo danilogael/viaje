@@ -35,6 +35,7 @@ header {
   list-style: none;
   display: flex;
   gap: 25px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -109,6 +110,52 @@ header {
   color: #0071c2;
   display: block;
   margin-bottom: 5px;
+}
+
+/* --- Selector de Moneda --- */
+.currency-menu {
+  position: relative;
+}
+
+#currency-btn {
+  background: #fff;
+  border: 1px solid #0071c2;
+  color: #0071c2;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.currency-dropdown {
+  display: none;
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  list-style: none;
+  padding: 5px 0;
+  width: 100px;
+  z-index: 100;
+}
+
+.currency-dropdown li {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.currency-dropdown li:hover {
+  background: #f0f0f0;
+}
+
+.currency-menu.active .currency-dropdown {
+  display: block;
 }
 
 /* --- Móvil --- */

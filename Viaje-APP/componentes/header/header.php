@@ -1,15 +1,18 @@
-
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Definir moneda por defecto si no existe en sesión
+if (!isset($_SESSION['currency'])) {
+    $_SESSION['currency'] = 'MXN';
+}
+$currentCurrency = $_SESSION['currency'];
 ?>
 
 <header>
   <div class="logo-titulo">
-
     <img src="/viaje/viaje/Viaje-APP/componentes/imagenes/Logo.png" alt="Logo Remolinos Tours" width="100">
-    
     <h1>Remolinos Tours</h1>
   </div>
 
@@ -19,30 +22,34 @@ if (session_status() === PHP_SESSION_NONE) {
       <li><a href="/viaje/viaje/Viaje-APP/componentes/paquetes/paquete.php">Paquetes</a></li>
       <li><a href="/viaje/viaje/Viaje-APP/componentes/Planea/planea.php">Planea tu viaje</a></li>
       <li><a href="/viaje/viaje/Viaje-APP/componentes/ofertas/ofertas.php">Ofertas</a></li>
-      <li><a href="#">Idioma y Moneda</a></li>
+
+      <!-- Selector de Moneda -->
+      <li class="currency-menu">
+        <button id="currency-btn"><?php echo $currentCurrency; ?></button>
+        <ul class="currency-dropdown">
+          <li data-currency="MXN">MXN</li>
+          <li data-currency="USD">USD</li>
+          <li data-currency="EUR">EUR</li>
+        </ul>
+      </li>
 
       <?php if (isset($_SESSION['user_id'])): ?>
-     
-
         <li class="user-menu">
-          <!-- Ícono del perfil (puedes usar FontAwesome o un ícono propio) -->
           <div class="user-icon">
             <i class="fas fa-user-circle"></i>
           </div>
-
-          <!-- Menú desplegable que aparece al pasar el mouse sobre el ícono -->
           <ul class="dropdown">
             <li><a href="/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php">Mi perfil</a></li>
-      
             <li><a href="/viaje/viaje/LoginAPI/logOut.php">Cerrar sesión</a></li>
           </ul>
         </li>
-
       <?php else: ?>
         <li><a href="/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php">Iniciar sesión</a></li>
       <?php endif; ?>
     </ul>
   </nav>
-
-  
 </header>
+
+<!-- JS -->
+<script src="/viaje/viaje/Viaje-APP/componentes/js/header.js"></script>
+<script src="/viaje/viaje/Viaje-APP/componentes/js/currency.js"></script>

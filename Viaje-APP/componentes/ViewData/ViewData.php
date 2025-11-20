@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
   <li><button class="menu-btn" data-section="reservas"><i class="fa-solid fa-suitcase"></i> Reservaciones</button></li>
   <li><button class="menu-btn" data-section="preferencias"><i class="fa-solid fa-magnifying-glass"></i> Preferencias</button></li>
   <li><button class="menu-btn" data-section="notificaciones"><i class="fa-solid fa-bell"></i> Notificaciones</button></li>
-  <li><button class="menu-btn" data-section="ayuda_contacto"><i class="fa-solid fa-circle-question"></i> Ayuda y Contacto</button></li>
+  <li><button class="menu-btn" data-section="ayuda_contacto"><i class="fa-solid fa-circle-question"></i> Atencion al cliente</button></li>
 </ul>
   </aside>
 
@@ -62,6 +62,7 @@ if (!isset($_SESSION['user_id'])) {
       <div style="margin-top:18px;">
         <button id="logoutBtn" class="btn-danger">Cerrar sesión</button>
       </div>
+      
     </section>
 
     <!-- SEGURIDAD -->
@@ -119,6 +120,7 @@ if (!isset($_SESSION['user_id'])) {
       </div>
       <div class="col-12 text-center">
         <button class="btn btn-primary px-4">Enviar</button>
+      </div>
     </section>
 
   </main>
@@ -127,7 +129,7 @@ if (!isset($_SESSION['user_id'])) {
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
 <script>
   const GET_USER_URL = '/viaje/viaje/LoginAPI/getUser.php';
-const UPDATE_USER_URL = '/viaje/viaje/LoginAPI/updateUser.php';
+const UPDATE_USER_URL = '/viaje/viaje/LoginAPI/update_user.php';
 const CHANGE_PASS_URL = '/viaje/viaje/LoginAPI/changePassword.php';
 const LOGOUT_URL = '/viaje/viaje/LoginAPI/logOut.php';
 
@@ -156,51 +158,90 @@ async function loadUser(){
 loadUser();
 function escapeHtml(t){return t??''}
 
-/* Editar datos */
 async function editarCampo(campo){
   const label = {
-    nombre:'Nombre',
-    apellido_paterno:'Apellido paterno',
-    apellido_materno:'Apellido materno',
     correo:'Correo',
     telefono:'Teléfono'
   };
 
-  const {value:nuevo} = await Swal.fire({
-    title:`Editar ${label[campo]}`,
-    input:'text',
-    showCancelButton:true,
-    inputValidator:(v)=>{
-      if(!v) return 'No puede estar vacío';
-      if(campo==='correo' && !/^\S+@\S+\.\S+$/.test(v)) return 'Correo inválido';
+  const { value: nuevo } = await Swal.fire({
+    title: `Editar ${label[campo]}`,
+    input: campo === 'telefono' ? 'number' : 'text',
+    inputAttributes: campo === 'telefono' ? { min: "0", max: "9999999999" } : {},
+    showCancelButton: true,
+    inputValidator: (v) => {
+      if (v.trim() === "") return "No puede estar vacío";
+
+      if (campo === 'correo' && !/^\S+@\S+\.\S+$/.test(v))
+        return "Correo inválido";
+
+      if (campo === 'telefono' && !/^[0-9]{10}$/.test(v))
+        return "Debe ser exactamente 10 dígitos";
     }
   });
 
-  if(!nuevo) return;
+  if (nuevo === undefined) return;
 
   const fd = new FormData();
-  fd.append('campo',campo);
-  fd.append('valor',nuevo);
+  fd.append('campo', campo);
+  fd.append('valor', nuevo);
 
-  const res = await fetch(UPDATE_USER_URL,{method:'POST',body:fd});
+  const res = await fetch(UPDATE_USER_URL, { method: 'POST', body: fd });
   const data = await res.json();
-  Swal.fire(data.success?'Listo':'Error',data.message,data.success?'success':'error');
-  if(data.success) loadUser();
+
+  Swal.fire(
+    data.success ? "Listo" : "Error",
+    data.message,
+    data.success ? "success" : "error"
+  );
+
+  if (data.success) loadUser();
 }
+
 
 /* Cambiar contraseña */
 async function cambiarPassword(){
   const {value:form} = await Swal.fire({
     title:"Cambiar contraseña",
     html:`
-      <input id="currentPass" type="password" class="swal2-input" placeholder="Contraseña actual">
-      <input id="newPass" type="password" class="swal2-input" placeholder="Nueva contraseña">
+      <div style="position:relative;">
+        <input id="currentPass" type="password" class="swal2-input" placeholder="Contraseña actual">
+        <i class="fa-solid fa-eye togglePass" data-target="currentPass"
+           style="position:absolute; right:25px; top:14px; cursor:pointer;"></i>
+      </div>
+
+      <div style="position:relative;">
+        <input id="newPass" type="password" class="swal2-input" placeholder="Nueva contraseña">
+        <i class="fa-solid fa-eye togglePass" data-target="newPass"
+           style="position:absolute; right:25px; top:14px; cursor:pointer;"></i>
+      </div>
     `,
+    didRender: () => {
+      // Activar función de ojito
+      document.querySelectorAll('.togglePass').forEach(icon => {
+        icon.addEventListener('click', () => {
+          const input = document.getElementById(icon.dataset.target);
+
+          if (input.type === "password") {
+              input.type = "text";
+              icon.classList.remove("fa-eye");
+              icon.classList.add("fa-eye-slash");
+          } else {
+              input.type = "password";
+              icon.classList.remove("fa-eye-slash");
+              icon.classList.add("fa-eye");
+          }
+        });
+      });
+    },
     preConfirm:()=>{
+
       const c=document.getElementById("currentPass").value;
       const n=document.getElementById("newPass").value;
+
       if(!c||!n) return Swal.showValidationMessage("Completa todos los campos");
       if(n.length<6) return Swal.showValidationMessage("Mínimo 6 caracteres");
+
       return {current:c,newp:n};
     },
     showCancelButton:true
@@ -220,7 +261,7 @@ async function cambiarPassword(){
 /* Logout */
 document.getElementById("logoutBtn").addEventListener("click",async()=>{
   await fetch(LOGOUT_URL);
-  window.location.href="/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php";
+  window.location.href="/viaje/viaje/Viaje-APP";
 });
 
 // ---- SIDEBAR FIX ----
