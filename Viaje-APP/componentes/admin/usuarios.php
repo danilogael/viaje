@@ -1,5 +1,5 @@
 <?php
-require "../protect/proteger_admin.php";
+require "../proteccion/proteger_admin.php";
 require "../../LoginAPI/config/db.php";
 include "../header/header.php";
 

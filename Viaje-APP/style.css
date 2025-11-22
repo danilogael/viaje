@@ -1,312 +1,246 @@
-/* --- Reset básico --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+:root {
+  --rojo: #d60000;
+  --azul: #0077cc;
+  --azul-claro: #00aaff;
+  --gris: #444;
+  --gris-claro: #f7f7f7;
+  --fondo: #ffffff;
+  --sombra: rgba(0,0,0,0.08);
+  --fuente-titulos: 'Montserrat', sans-serif;
+  --fuente-texto: 'Open Sans', sans-serif;
 }
 
 body {
-  background-color: #f4f6f8;
-  color: #333;
+  font-family: var(--fuente-texto);
+  margin: 0;
+  background: var(--fondo);
   line-height: 1.6;
 }
 
-/* --- Secciones principales --- */
-section {
-  padding: 60px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-section h2 {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 30px;
-  color: #222;
-}
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-/* --- Cards elegantes --- */
-.card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  flex: 1 1 calc(25% - 20px);
-  min-width: 220px;
-  padding: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
-}
-
-/* --- Botones elegantes --- */
-button {
-  background-color: #0071c2;
+/* Botones */
+.btn, .btn-reserva {
+  background: linear-gradient(135deg, var(--azul), var(--azul-claro));
   color: #fff;
+  padding: 12px 28px;
   border: none;
-  padding: 12px 22px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 15px;
   transition: all 0.3s ease;
+  text-decoration: none;
+  display: center;
+}
+.btn:hover, .btn-reserva:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px var(--sombra);
 }
 
-button:hover {
-  background-color: #005ea3;
-  transform: translateY(-2px);
+/* Hero */
+.hero {
+  background-image: url('/Viaje-APP/componetes/imagenes/fondo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* --- Sección de beneficios --- */
-.benefits-container {
+.hero-overlay {
+  background: rgba(0,0,0,0.55);
+  padding: 50px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  max-width: 900px;
+}
+.hero-overlay h1 {
+  font-family: var(--fuente-titulos);
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+/* Buscador */
+.buscador {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.buscador input, .buscador button {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+.buscador input:focus {
+  border-color: var(--azul);
+  outline: none;
+  box-shadow: 0 0 8px rgba(0,119,204,0.3);
+}
+
+/* Secciones */
+section {
+  padding: 80px 20px;
+}
+section h2 {
+  text-align: center;
+  font-family: var(--fuente-titulos);
+  font-size: 32px;
+  margin-bottom: 50px;
+  color: var(--rojo);
+}
+
+/* Tarjetas */
+.grid {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
 }
-
-.benefit {
+.card {
   background: #fff;
   border-radius: 12px;
-  padding: 25px;
-  flex: 1 1 calc(50% - 30px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.3s;
+  box-shadow: 0 4px 12px var(--sombra);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: 280px;
 }
-
-.benefit:hover {
-  transform: translateY(-4px);
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px var(--sombra);
 }
-
-.benefit strong {
-  display: block;
-  margin-bottom: 12px;
-  color: #0071c2;
-  font-size: 19px;
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
-
-/* --- Responsive --- */
-@media (max-width: 1024px) {
-  .cards-container { flex-direction: row; }
-  .card { flex: 1 1 calc(50% - 20px); }
-  .benefit { flex: 1 1 100%; }
+.card h3 {
+  font-family: var(--fuente-titulos);
+  font-size: 20px;
+  margin-bottom: 10px;
 }
-
-@media (max-width: 768px) {
-  section { padding: 40px 20px; }
-  .card { flex: 1 1 100%; }
+.card p {
+  font-size: 16px;
+  margin-bottom: 15px;
 }
-
-/* --- Buscador estilo Booking moderno --- */
-.search-section {
-  background: linear-gradient(135deg, #0071c2, #0096ff);
-  color: #fff;
-  padding: 50px 30px;
-  border-radius: 14px;
-  margin-bottom: 60px;
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-.search-section h2 {
-  color: #fff;
-  font-size: 34px;
-  margin-bottom: 35px;
+.favorito {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--rojo);
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
+.favorito:hover { transform: scale(1.2); }
+.estrellas { color: #ffcc00; }
 
-.search-form {
+/* Por qué elegirnos */
+.porque-elegirnos {
+  background: var(--gris-claro);
+}
+.beneficios-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  justify-content: center;
+  gap: 40px;
+}
+.beneficio {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--sombra);
+  padding: 30px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.beneficio:hover { transform: scale(1.05); }
+.beneficio img { width: 80px; margin-bottom: 20px; }
+.beneficio h3 {
+  font-family: var(--fuente-titulos);
+  color: var(--azul);
+  margin-bottom: 10px;
+}
+
+/* Búsquedas populares */
+.bp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+.bp-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--sombra);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+.bp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px var(--sombra);
+}
+.bp-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.bp-info { padding: 15px; }
+.bp-info h3 {
+  font-family: var(--fuente-titulos);
+  font-size: 20px;
+  color: var(--azul);
+  margin-bottom: 8px;
+}
+.bp-info p { font-size: 15px; color: var(--gris); }
+
+/* Testimonios */
+.testimonios-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+blockquote {
   background: #fff;
   padding: 25px;
+  border-left: 5px solid var(--azul);
+  border-radius: 10px;
+  max-width: 320px;
+  box-shadow: 0 4px 12px var(--sombra);
+  font-style: italic;
+}
+
+/* Quiénes somos */
+.quienes img {
+  width: 100%;
+  max-width: 700px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.search-input {
-  flex: 1 1 200px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+/* Botón flotante */
+.reserva-flotante {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
 }
 
-.search-input label {
-  font-size: 14px;
-  margin-bottom: 6px;
-  color: #555;
-}
-
-.search-input input,
-.search-input select {
-  padding: 12px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  color: #333;
-}
-
-.search-input input:focus,
-.search-input select:focus {
-  border-color: #0071c2;
-  box-shadow: 0 0 6px rgba(0,113,194,0.3);
-  outline: none;
-}
-
-/* --- Autocomplete de destinos --- */
-.autocomplete-list {
-  position: absolute;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  max-height: 250px;
-  overflow-y: auto;
-  width: 100%;
-  z-index: 300;
-  color: #0071c2;
-}
-
-.autocomplete-item {
-  padding: 10px 12px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.autocomplete-item:hover {
-  background-color: #f0f0f0;
-  color: #0071c2;
-}
-
-/* --- Buscador de huéspedes elegante --- */
-.guests-dropdown { position: relative; width: 100%; }
-
-#guests-btn {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #0071c2;
-  border-radius: 8px;
-  background-color: #fff;
-  color: #0071c2;
-  text-align: left;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#guests-btn::after {
-  content: "\f078";
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  font-size: 14px;
-  color: #0071c2;
-}
-
-.guests-menu {
-  display: none;
-  position: absolute;
-  top: 48px;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  z-index: 200;
-  color: #0071c2;
-}
-
-.guests-menu.active { display: block; }
-
-.guest-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.guest-row span {
-  font-weight: 500;
-  color: #0071c2;
-  font-size: 14px;
-}
-
-.guest-controls {
-  display: flex;
-  align-items: center;
-}
-
-.guest-controls button {
-  padding: 5px 12px;
-  margin: 0 5px;
-  border: 1px solid #0071c2;
-  border-radius: 6px;
-  background: #fff;
-  color: #0071c2;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.guest-controls button:hover {
-  background-color: #0071c2;
-  color: #fff;
-  transform: translateY(-1px);
-}
-
-.guest-controls span {
-  min-width: 28px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 14px;
-  color: #0071c2;
-}
-
-/* --- Edades de niños --- */
-#children-ages { margin-top: 10px; }
-
-.child-age-row {
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-}
-
-.child-age-row label {
-  flex: 1;
-  font-size: 14px;
-  color: #0071c2;
-}
-
-.child-age-row input {
-  width: 60px;
-  padding: 5px 8px;
-  border: 1px solid #0071c2;
-  border-radius: 6px;
-  text-align: center;
-  color: #0071c2;
-}
-
-/* --- Botón Buscar dentro del buscador --- */
-.search-form button {
-  background-color: #0071c2;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 22px;
-  border-radius: 8px;
-  flex: 1 1 150px;
-  transition: all 0.3s;
-}
-
-.search-form button:hover {
-  background-color: #005ea3;
-  transform: translateY(-2px);
+/* Responsivo */
+@media (max-width: 900px) {
+  .hero-overlay h1 { font-size: 32px; }
+  .buscador { grid-template-columns: 1fr; }
+  .grid { flex-direction: column; align-items: center; }
 }

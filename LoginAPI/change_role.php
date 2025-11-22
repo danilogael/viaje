@@ -2,7 +2,7 @@
 require "config/db.php";
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['rol'] !== 'admin') {
-    header("Location: ../Viaje-APP/componentes/iniciarSesion/login.php");
+    header("Location: ../Viaje-APP/componentes/iniciarsesion/sign.php");
     exit;
 }
 

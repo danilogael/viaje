@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-require_once 'config/db.php';  // <-- CORREGIDO
+require_once 'config/db.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -52,6 +52,16 @@ if ($columna === 'telefono') {
         echo json_encode(['success' => false, 'message' => 'Teléfono inválido (10 dígitos)']);
         exit;
     }
+
+    // <-- INICIO DEL CÓDIGO AÑADIDO PARA VALIDAR EL TELÉFONO -->
+    $q = $conexion->prepare("SELECT id FROM usuarios WHERE telefono = ? AND id <> ? LIMIT 1");
+    $q->execute([$valor, $id]);
+
+    if ($q->fetch()) {
+        echo json_encode(['success' => false, 'message' => 'El teléfono ya está en uso por otro usuario']);
+        exit;
+    }
+    // <-- FIN DEL CÓDIGO AÑADIDO -->
 }
 
 try {
@@ -60,5 +70,6 @@ try {
 
     echo json_encode(['success' => true, 'message' => 'Actualizado correctamente']);
 } catch (Exception $e) {
-    echo json_encode(['success' => false, 'message' => 'Error al actualizar']);
+    // Manejo de excepciones más específico si usas la restricción UNIQUE en BD
+    echo json_encode(['success' => false, 'message' => 'Error al actualizar: ' . $e->getMessage()]);
 }
