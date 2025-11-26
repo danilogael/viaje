@@ -184,9 +184,19 @@ header {
     cursor: pointer;
     color: #0071c2;
   }
+}
+header, 
+header a{
+    font-size: 20px !important;
+}
+   header .logo-titulo .logo{
+    font-size: 4rem;
+    font-weight: bolder;
+    color: #333;
+    text-decoration: none;
+}
 
-  /* Evita que hover interfiera en móvil */
-  .user-menu:hover .dropdown {
-    display: none;
-  }
+header .logo-titulo .logo span
+{
+    color: var(--blue);
 }

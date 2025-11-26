@@ -22,10 +22,10 @@ if (!isset($_SESSION['user_id'])) {
   <meta charset="utf-8">
   <title>Mi cuenta — Remolinos Tours</title>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="ViewData.css">
   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
-  <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos_footer/estilos_footer.css">
+  <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/estilos_footer.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>

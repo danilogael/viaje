@@ -13,7 +13,7 @@ $currentCurrency = $_SESSION['currency'];
 <header>
   <div class="logo-titulo">
     <img src="/viaje/viaje/Viaje-APP/componentes/header/Logo.png" alt="Logo Remolinos Tours" width="100">
-    <h1>Remolinos Tours</h1>
+  <a href="#" class="logo">Remolinos Tours <span>.</span></a>
   </div>
 
   <nav>
@@ -36,7 +36,7 @@ $currentCurrency = $_SESSION['currency'];
       <?php if (isset($_SESSION['user_id'])): ?>
         <li class="user-menu">
           <div class="user-icon">
-            <i class="fas fa-user-circle"></i>
+            <i class="fas fa-user"></i>
           </div>
           <ul class="dropdown">
             <li><a href="/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php">Mi perfil</a></li>

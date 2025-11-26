@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Registro</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
@@ -15,7 +15,7 @@
 <div class="google-container">
   <!-- Lado izquierdo: Logo y bienvenida -->
   <div class="google-left">
-    <img src="/viaje/viaje/Viaje-APP/componentes/imagenes/Logo.png" class="logo">
+    <img src="/viaje/viaje/Viaje-APP/imagenes/Logo.png" class="logo">
     <h1 class="title">¡Bienvenido!</h1>
     <p class="subtitle">Regístrate para acceder a todas las funciones y disfrutar de nuestra plataforma.</p>
   </div>

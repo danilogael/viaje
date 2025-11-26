@@ -1,5 +1,4 @@
 <?php
-// LoginAPI/config/db.php
 $host = "localhost";
 $user = "root";
 $pass = "";
