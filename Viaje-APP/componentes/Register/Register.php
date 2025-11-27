@@ -13,14 +13,14 @@
 <body>
 
 <div class="google-container">
-  <!-- Lado izquierdo: Logo y bienvenida -->
+
   <div class="google-left">
     <img src="/viaje/viaje/Viaje-APP/imagenes/Logo.png" class="logo">
     <h1 class="title">¡Bienvenido!</h1>
     <p class="subtitle">Regístrate para acceder a todas las funciones y disfrutar de nuestra plataforma.</p>
   </div>
 
-  <!-- Lado derecho: Formulario -->
+  
   <div class="google-right">
     <form id="registerForm">
 
@@ -44,7 +44,7 @@
         <label for="correo">Correo electrónico</label>
       </div>
 
-      <!-- Teléfono mejorado -->
+    
       <div class="input-container phone-container">
         <input type="tel" id="telefono" name="telefono" placeholder=" " required>
       </div>

@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once "config/db.php"; // Aquí sí tienes $conexion (PDO)
+require __DIR__ . '/../db.php';
 
 $user_id = $_SESSION['user_id'];
 

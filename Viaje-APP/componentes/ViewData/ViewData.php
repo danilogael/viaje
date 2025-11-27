@@ -49,7 +49,6 @@ if (!isset($_SESSION['user_id'])) {
   </aside>
 
   <main class="content">
-    <!-- INFORMACIÓN PERSONAL -->
     <section id="info" class="card">
       <h2>Información personal</h2>
       <p class="subtitle">Revisa o modifica tu información</p>
@@ -65,46 +64,46 @@ if (!isset($_SESSION['user_id'])) {
       
     </section>
 
-    <!-- SEGURIDAD -->
+    
     <section id="seguridad" class="card hidden">
       <h2>Seguridad de la cuenta</h2>
       <p class="subtitle">Opciones de acceso y seguridad.</p>
       <button class="btn-edit" onclick="cambiarPassword()">Cambiar contraseña</button>
     </section>
 
-    <!-- FAVORITOS -->
+   
     <section id="favoritos" class="card hidden">
       <h2>Favoritos</h2>
       <p class="subtitle">Destinos guardados.</p>
       <div id="favList">Aún no hay favoritos.</div>
     </section>
 
-    <!-- RECIENTES -->
+  
     <section id="recientes" class="card hidden">
       <h2>Vistos recientemente</h2>
       <p class="subtitle">Tu historial reciente.</p>
       <div id="recentList">Sin historial.</div>
     </section>
 
-    <!-- RESERVAS -->
+  
     <section id="reservas" class="card hidden">
       <h2>Reservaciones</h2>
       <p class="subtitle">Tus reservas aparecerán aquí.</p>
       <div id="resList">No hay reservas.</div>
     </section>
- <!-- PREFERENCIAS  -->
+ 
     <section id="preferencias" class="card hidden">
       <h2>Preferencias</h2>
       <p class="subtitle">Tus preferencias aparecerán aquí.</p>
       <div id="resList">No hay preferencias.</div>
     </section>
-     <!-- NOTIFICACIONES -->
+    
     <section id="notificaciones" class="card hidden">
       <h2>Notificaciones</h2>
       <p class="subtitle">Tus notificaciones aparecerán aquí.</p>
       <div id="resList">No hay notificaciones.</div>
     </section>
-     <!--  AYUDA Y CONTACTO -->
+    
     <section id="ayuda_contacto" class="card hidden">
       <h2>Contáctanos</h2>
       <div class="container">
@@ -128,10 +127,10 @@ if (!isset($_SESSION['user_id'])) {
 
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
 <script>
-  const GET_USER_URL = '/viaje/viaje/LoginAPI/getUser.php';
-const UPDATE_USER_URL = '/viaje/viaje/LoginAPI/update_user.php';
-const CHANGE_PASS_URL = '/viaje/viaje/LoginAPI/changePassword.php';
-const LOGOUT_URL = '/viaje/viaje/LoginAPI/logOut.php';
+  const GET_USER_URL = '/viaje/viaje/LoginAPI/login/getUser.php';
+const UPDATE_USER_URL = '/viaje/viaje/LoginAPI/login/update_user.php';
+const CHANGE_PASS_URL = '/viaje/viaje/LoginAPI/login/changePassword.php';
+const LOGOUT_URL = '/viaje/viaje/LoginAPI/login/logOut.php';
 
 /* MODO OSCURO */
 document.getElementById('darkModeBtn').addEventListener('click',()=>{
@@ -199,7 +198,6 @@ async function editarCampo(campo){
 }
 
 
-/* Cambiar contraseña */
 async function cambiarPassword(){
   const {value:form} = await Swal.fire({
     title:"Cambiar contraseña",
@@ -217,7 +215,6 @@ async function cambiarPassword(){
       </div>
     `,
     didRender: () => {
-      // Activar función de ojito
       document.querySelectorAll('.togglePass').forEach(icon => {
         icon.addEventListener('click', () => {
           const input = document.getElementById(icon.dataset.target);

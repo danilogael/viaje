@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +8,7 @@
   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
   <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/estilos_footer.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+<script src="index.js"></script>
 </head>
 <body>
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
@@ -40,28 +39,28 @@ contamos con Registro nacional de turismo vigente!.</p>
 </section>
 <section class="icons-container">
     <div class="icons">
-       <img src="imagenes/icon-1.png" alt="">
+       <img src="/viaje/viaje/Viaje-APP/imagenes/seguro_viaje.png" alt="">
         <div class="info">
             <h3>Viaje Seguro</h3>
             <span>Contamos con seguro de viaje.</span>
         </div>
     </div>
     <div class="icons">
-       <img src="imagenes/icon-2.png" alt="">
+       <img src="/viaje/viaje/Viaje-APP/imagenes/devolucion.png" alt="">
         <div class="info">
             <h3>Devolucion/Garantia  </h3>
             <span>Cancelacion flexible, Garantia de reembolso</span>
         </div>
     </div>
     <div class="icons">
-       <img src="imagenes/icon-3.png" alt="">
+       <img src="/viaje/viaje/Viaje-APP/imagenes/support-removebg-preview.png" alt="">
         <div class="info">
             <h3> Soporte 24/7</h3>
             <span>Estamos aquí para ayudarte</span>
         </div>
 </div>
 <div class="icons">
-       <img src="imagenes/icon-4.png" alt="">
+       <img src="/viaje/viaje/Viaje-APP/imagenes/metodos_pago.png" alt="">
         <div class="info">
             <h3>Pagos/ Metodos de pago </h3>
             <span>Contamos con diversos métodos de pago seguros</span>
@@ -289,7 +288,7 @@ contamos con Registro nacional de turismo vigente!.</p>
             <img src="/viaje/viaje/Viaje-APP/imagenes/persona1.jpg" alt="">
             <div class="user-info"> 
                 <h3>john deo</h3>
-                <span> happy customer</span>
+                
               </div>
               </div> 
               <span class="fas fa-quote-right"></span>
@@ -306,10 +305,10 @@ contamos con Registro nacional de turismo vigente!.</p>
              nisi aliquid natus exercitationem! Optio a iusto eos cum ratione eius commodi ut placeat libero!
               Minima.</p>
               <div class="user">
-            <img src="/viaje/viaje/Viaje-APP/imagenes/persona1.jpg" alt="">
+            <img src="/viaje/viaje/Viaje-APP/imagenes/persona2.jpg" alt="">
             <div class="user-info"> 
                 <h3>john deo</h3>
-                <span> happy customer</span>
+                
               </div>
               </div> 
               <span class="fas fa-quote-right"></span>
@@ -326,10 +325,10 @@ contamos con Registro nacional de turismo vigente!.</p>
              nisi aliquid natus exercitationem! Optio a iusto eos cum ratione eius commodi ut placeat libero!
               Minima.</p>
               <div class="user">
-            <img src="/viaje/viaje/Viaje-APP/imagenes/persona1.jpg" alt="">
+            <img src="/viaje/viaje/Viaje-APP/imagenes/persona3.jpg" alt="">
             <div class="user-info"> 
                 <h3>john deo</h3>
-                <span> happy customer</span>
+                
               </div>
               </div> 
               <span class="fas fa-quote-right"></span>
@@ -346,10 +345,10 @@ contamos con Registro nacional de turismo vigente!.</p>
              nisi aliquid natus exercitationem! Optio a iusto eos cum ratione eius commodi ut placeat libero!
               Minima.</p>
               <div class="user">
-            <img src="/viaje/viaje/Viaje-APP/imagenes/persona1.jpg" alt="">
+            <img src="/viaje/viaje/Viaje-APP/imagenes/persona4.jpg" alt="">
             <div class="user-info"> 
                 <h3>john deo</h3>
-                <span> happy customer</span>
+                
               </div>
               </div> 
               <span class="fas fa-quote-right"></span>
@@ -357,32 +356,34 @@ contamos con Registro nacional de turismo vigente!.</p>
     
     </div>
     <center>
-        <a href="/viaje/viaje/Viaje-APP/componentes/ofertas/ofertas.php" class="btn">
+        <a href="/viaje/viaje/Viaje-APP/componentes/reseñas/reseñas.php" class="btn">
             Ver todas las Reseñas
         </a>
     </center>
 </section>
+
 <section class="contact" id="contact">
 
     <h1 class="heading"><span>contactanos</span> </h1>
 
     <div class="row">
 
-        <form action="">
-            <input type="text" placeholder="nombre" class="box">
-            <input type="email" placeholder=" correo electrónico" class="box">
-            <input type="tel" placeholder="número" class="box">
-            <textarea name="" placeholder="mensaje" class="box" id="" cols="30" rows="10"></textarea>
+        <form id="formContacto">
+            <input type="text" name="nombre" placeholder="nombre completo" class="box">
+            <input type="email" name="correo" placeholder="correo electrónico" class="box">
+            <input type="tel" name="numero" placeholder="número" class="box">
+            <textarea name="mensaje" placeholder="mensaje" class="box" cols="30" rows="10"></textarea>
             <input type="submit" value="enviar mensaje" class="btn">
         </form>
-        <div class="image">
-            
-        </div>
+
+        <div class="image"></div>
+
     </div>
 
 </section>
 
 
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
+<script src="index.js"></script>
 </body>
 </html>

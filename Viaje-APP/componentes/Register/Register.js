@@ -76,7 +76,7 @@ registerForm.addEventListener('submit', async e => {
   const formData = new FormData(registerForm);
 
   try {
-    const res = await fetch('/viaje/viaje/LoginAPI/register.php', {
+    const res = await fetch('/viaje/viaje/LoginAPI/login/register.php', {
       method: 'POST',
       body: formData
     });

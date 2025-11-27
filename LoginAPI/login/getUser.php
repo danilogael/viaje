@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-require __DIR__ . '/config/db.php';
+require __DIR__ . '/../db.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {

@@ -41,7 +41,7 @@ loginForm.addEventListener('submit', async e => {
     const formData = new FormData(loginForm);
 
     try {
-        const res = await fetch("/viaje/viaje/LoginAPI/login.php", {
+        const res = await fetch("/viaje/viaje/LoginAPI/login/login.php", {
             method: "POST",
             body: formData
         });

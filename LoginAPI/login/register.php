@@ -1,5 +1,5 @@
 <?php
-require "./config/db.php";
+require __DIR__ . '/../db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(["success" => false, "message" => "Método no permitido"]);
