@@ -2,14 +2,23 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Enlace al archivo CSS -->
+  <link rel="stylesheet" href="footer_pag.css">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Actividades en el Destino | Mi Agencia</title>
 </head>
-<body style="margin: 0; font-family: Arial, sans-serif;">
 
-  <section id="actividades" style="padding: 20px;">
+<body>
+
+  <!-- Contenedor principal del contenido -->
+  <div class="container">
+
+    <!-- Título principal -->
     <h1 style="text-align: center;">Actividades en el Destino</h1>
 
+    <!-- Lista de actividades -->
     <ul>
       <li>Nado con delfines o tiburones ballena.</li>
       <li>Recorridos en lancha, velero o yate privado.</li>
@@ -20,6 +29,7 @@
       <li>Visitas a parques naturales, cascadas, montañas o reservas ecológicas.</li>
     </ul>
 
+    <!-- Información adicional -->
     <p>
       Además, en fechas especiales como <strong>Navidad</strong>, <strong>Semana Santa</strong> o <strong>verano</strong>,
       ofrecemos paquetes con actividades temáticas, descuentos exclusivos y eventos locales.
@@ -28,8 +38,19 @@
     <p>
       Nuestro objetivo es que vivas tu viaje como una experiencia completa, llena de recuerdos inolvidables.
     </p>
+
+    <!-- Botón para regresar (estilizado por CSS) -->
+    <!-- Enlace para volver al inicio -->
+    <div style="text-align: center;">
+      <a class="btn-regresar" href="footer.php">Volver al inicio</a>
     </div>
-  </section>
+
+  </div>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    © 2025 Mi Agencia - Todos los derechos reservados
+  </footer>
 
 </body>
 </html>

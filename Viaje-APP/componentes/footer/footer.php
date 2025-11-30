@@ -18,7 +18,7 @@
         <li><a href="viajes_nacionales_pag.php">Viajes Nacionales e Internacionales</a></li>
         <li><a href="Charter_Carretero.php">Charter Carretero</a></li>
         <li><a href="pasaporte.php">Tramite de Pasaporte</a></li>
-        <li><a href="ETA.html">ETA (Permiso para Ingresar a Canada) </a></li>
+        <li><a href="ETA.php">ETA (Permiso para Ingresar a Canada) </a></li>
          <li><a href="tours.php">Tours </a></li>
          <li><a href="traslados.php">Traslados y Mucho mas</a></li>
       </ul> 

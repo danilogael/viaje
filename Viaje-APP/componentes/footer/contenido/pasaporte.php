@@ -2,34 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Enlace al archivo CSS -->
+  <link rel="stylesheet" href="footer_pag.css">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Documentación para el Pasaporte | Mi Agencia</title>
 </head>
-<body style="margin: 0;">
 
-  <section id="pasaporte" 
+<body>
 
-      <h2 style="color: #002a69; text-align: center; font-size: 2em; margin-bottom: 20px;">Documentación para el Pasaporte</h2>
+  <!-- Contenedor principal del contenido -->
+  <div class="container">
 
-      <p>Para realizar cualquier trámite relacionado con tu pasaporte, es necesario contar con los siguientes requisitos:</p>
+    <!-- Título principal -->
+    <h2>Documentación para el Pasaporte</h2>
 
-      <ul>
-        <li>CURP actualizada.</li>
-        <li>Vigencia del pasaporte.</li>
-      </ul>
+    <p>
+      Para realizar cualquier trámite relacionado con tu pasaporte, es necesario contar con los siguientes requisitos:
+    </p>
 
-      <p>
-        Para más información sobre cómo revisar o renovar la vigencia de tu pasaporte, te
-        recomendamos agendar tu cita comunicándote directamente con el número de atención de
-        nuestra empresa. Nuestro personal te orientará para que el proceso sea rápido y sencillo.
-      </p>
+    <ul>
+      <li>CURP actualizada.</li>
+      <li>Vigencia del pasaporte.</li>
+    </ul>
 
-      <div style="text-align: center; margin-top: 30px;">
-        <a href="index.html"
-          Volver al inicio
-        </a>
-      </div>
+    <p>
+      Para más información sobre cómo revisar o renovar la vigencia de tu pasaporte, te recomendamos agendar tu cita comunicándote directamente con el número de atención de nuestra empresa. Nuestro personal te orientará para que el proceso sea rápido y sencillo.
+    </p>
+
+    <!-- Botón para regresar -->
+    <div style="text-align: center; margin-top: 30px;">
+      <a class="btn-regresar" href="footer.php">Volver al inicio</a>
     </div>
-  </section>
+
+  </div>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    © 2025 Mi Agencia - Todos los derechos reservados
+  </footer>
+
 </body>
 </html>

@@ -2,40 +2,47 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Enlace al CSS principal -->
+  <link rel="stylesheet" href="footer_pag.css">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Traslados y Renta de Autos | Mi Agencia</title>
 </head>
-<body style="margin: 0;">
 
-  <section id="traslados-renta" 
+<body>
 
+  <!-- Contenedor principal del contenido -->
+  <div class="container">
 
-     <h2 style="color: #020069ff; text-align: center; font-size: 2em; margin-bottom: 20px;">Traslados y Renta de Autos</h2>
+    <!-- Título principal -->
+    <h2 style="color: #020069ff; text-align: center; font-size: 2em; margin-bottom: 20px;">
+      Traslados y Renta de Autos
+    </h2>
 
-      <p>
-        El servicio de traslados busca ofrecerte la mayor comodidad desde tu llegada al destino.
-        Contamos con transporte privado o compartido desde el aeropuerto hasta la puerta de tu
-        hotel, y viceversa, con conductores puntuales y unidades modernas.
-      </p>
+    <p>
+      El servicio de traslados busca ofrecerte la mayor comodidad desde tu llegada al destino. Contamos con transporte privado o compartido desde el aeropuerto hasta la puerta de tu hotel, y viceversa, con conductores puntuales y unidades modernas.
+    </p>
 
-      <p>
-        También te ofrecemos la opción de <strong>renta de automóviles</strong>, tanto a nivel nacional como
-        internacional, con diferentes modelos que se ajustan a tus necesidades: autos compactos,
-        familiares, de lujo o SUV.
-      </p>
+    <p>
+      También te ofrecemos la opción de <strong>renta de automóviles</strong>, tanto a nivel nacional como internacional, con diferentes modelos que se ajustan a tus necesidades: autos compactos, familiares, de lujo o SUV.
+    </p>
 
-      <p>
-        Con un vehículo propio podrás moverte libremente por tu destino, visitar lugares cercanos,
-        realizar compras o disfrutar de excursiones por tu cuenta. Todos los vehículos incluyen
-        seguro y asistencia durante el viaje.
-      </p>
+    <p>
+      Con un vehículo propio podrás moverte libremente por tu destino, visitar lugares cercanos, realizar compras o disfrutar de excursiones por tu cuenta. Todos los vehículos incluyen seguro y asistencia durante el viaje.
+    </p>
 
-      <div style="text-align: center; margin-top: 30px;">
-        <a href="index.html"
-          Volver al inicio
-        </a>
-      </div>
+    <!-- Botón para regresar -->
+    <div style="text-align: center; margin-top: 30px;">
+      <a class="btn-regresar" href="index.html">Volver al inicio</a>
     </div>
-  </section>
+
+  </div>
+
+  <!-- Pie de página -->
+  <div class="footer">
+    © 2025 Mi Agencia – Todos los derechos reservados.
+  </div>
+
 </body>
 </html>

@@ -1,47 +1,53 @@
-<!-- =======================================
-     Página: SERVICIO DE CARÁCTER CARRETERO
-     ======================================= -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Enlace al archivo de estilos principal -->
+  <link rel="stylesheet" href="footer_pag.css">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicio de Carácter Carretero | Mi Agencia</title>
+  <title>Servicio de Charter Carretero | Mi Agencia</title>
 </head>
-<body style="margin: 0;">
 
-  <!-- SECCIÓN PRINCIPAL -->
-  <section id="charter-carretero" 
-<h2 style="color: #002a69; text-align: center; font-size: 2em; margin-bottom: 20px;">
-        Servicio de Carácter Carretero
-      </h2>
+<body>
 
-      <p>
-        El servicio de carácter carretero es una opción práctica, económica y segura para
-        trasladarte dentro del país. Este servicio opera en estados como <strong>Aguascalientes</strong> y <strong>Zacatecas</strong>,
-        brindando transporte terrestre desde tu punto de partida directamente hasta la puerta de tu
-        hotel.
-      </p>
+  <!-- Contenedor principal del contenido -->
+  <div class="container">
 
-      <p>
-        A tu regreso, también puedes solicitar el traslado hacia la Central Camionera o el Aeropuerto,
-        garantizando así una experiencia completa sin preocupaciones logísticas.
-      </p>
+    <!-- Título principal -->
+    <h2>Servicio de Carácter Carretero</h2>
 
-      <p>
-        Nuestros vehículos cuentan con todas las medidas de seguridad y confort, y son operados
-        por conductores profesionales con amplia experiencia en rutas nacionales. Además, puedes
-        contratar servicios especiales para grupos, eventos o viajes familiares.
-      </p>
+    <p>
+      El servicio de carácter carretero es una opción práctica, económica y segura para
+      trasladarte dentro del país. Este servicio opera en estados como <strong>Aguascalientes</strong> y <strong>Zacatecas</strong>,
+      brindando transporte terrestre desde tu punto de partida directamente hasta la puerta de tu
+      hotel.
+    </p>
 
-      <div >
-        <a href="footer.php"
+    <p>
+      A tu regreso, también puedes solicitar el traslado hacia la Central Camionera o el Aeropuerto,
+      garantizando así una experiencia completa sin preocupaciones logísticas.
+    </p>
 
-          Volver al inicio
+    <p>
+      Nuestros vehículos cuentan con todas las medidas de seguridad y confort, y son operados
+      por conductores profesionales con amplia experiencia en rutas nacionales. Además, puedes
+      contratar servicios especiales para grupos, eventos o viajes familiares.
+    </p>
 
-
+    <!-- Botón para regresar -->
+    <!-- Enlace para volver al inicio -->
+    <div style="text-align: center;">
+      <a class="btn-regresar" href="footer.php">Volver al inicio</a>
     </div>
-  </section>
+
+  </div>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    © 2025 Mi Agencia - Todos los derechos reservados
+  </footer>
+
 </body>
 </html>
