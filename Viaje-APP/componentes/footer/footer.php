@@ -16,7 +16,7 @@
       <h3>servicios</h3>
       <ul>
         <li><a href="viajes_nacionales_pag.php">Viajes Nacionales e Internacionales</a></li>
-        <li><a href="Charter_Carretero.php">Charter Carretero</a></li>
+        <li><a href="charter_carretero.php">Charter Carretero</a></li>
         <li><a href="pasaporte.php">Tramite de Pasaporte</a></li>
         <li><a href="ETA.php">ETA (Permiso para Ingresar a Canada) </a></li>
          <li><a href="tours.php">Tours </a></li>
@@ -27,10 +27,10 @@
     <div class="footer-section">
       <h3>Ayuda</h3>
       <ul>
-        <li><a href="centro_SO.html">Centro de soporte</a></li>
-        <li><a href="cancelaciones.html">Cancelaciones</a></li>
-        <li><a href="politica_PRIV.html">Política de privacidad</a></li>
-        <li><a href="terminos_CON.html">Términos y condiciones</a></li>
+        <li><a href="centro_SO.php">Centro de soporte</a></li>
+        <li><a href="cancelaciones.php">Cancelaciones</a></li>
+        <li><a href="politica_PRIV.php">Política de privacidad</a></li>
+        <li><a href="terminos_CON.php">Términos y condiciones</a></li>
       </ul>
     </div>
 
