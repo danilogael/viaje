@@ -25,40 +25,43 @@
       </div>
     </div>
 
-    <!-- SECCIÓN 2: Servicios -->
+ <!-- Sección Servicios -->
     <div class="footer-section">
       <h3>Servicios</h3>
       <ul>
-        <li><a href="viajes_nacionales_pag.php">Viajes Nacionales e Internacionales</a></li>
-        <li><a href="charter_carretero.php">Charter Carretero</a></li>
-        <li><a href="pasaporte.php">Trámite de Pasaporte</a></li>
-        <li><a href="ETA.php">ETA (Permiso para ingresar a Canadá)</a></li>
-        <li><a href="tours.php">Tours</a></li>
-        <li><a href="traslados.php">Traslados y mucho más</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/servicios/viajes_nacionales_pag.php">Viajes Nacionales e Internacionales</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/servicios/charter_carretero.php">Charter Carretero</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/servicios/pasaporte.php">Trámite de Pasaporte</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/servicios/ETA.php">ETA (Permiso para Canadá)</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/servicios/tours.php">Tours</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/servicios/traslados.php">Traslados y mucho más</a></li>
       </ul>
     </div>
 
-    <!-- SECCIÓN 3: Ayuda -->
+ 
+<!-- Sección Ayuda -->
     <div class="footer-section">
       <h3>Ayuda</h3>
       <ul>
-        <li><a href="centro_SO.php">Centro de soporte</a></li>
-        <li><a href="cancelaciones.php">Cancelaciones</a></li>
-        <li><a href="politica_PRIV.php">Política de privacidad</a></li>
-        <li><a href="terminos_CON.php">Términos y condiciones</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/ayuda/centro_SO.php">Centro de soporte</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/ayuda/cancelaciones.php">Cancelaciones</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/ayuda/politica_PRIV.php">Política de privacidad</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/ayuda/terminos_CON.php">Términos y condiciones</a></li>
       </ul>
     </div>
 
-    <!-- SECCIÓN 4: Descubre -->
+   <!-- Sección Descubre -->
     <div class="footer-section">
       <h3>Descubre</h3>
       <ul>
-        <li><a href="ofertas.php">Ofertas de última hora</a></li>
-        <li><a href="destinos.php">Destinos populares</a></li>
-        <li><a href="recomendaciones.php">Recomendaciones personalizadas</a></li>
-        <li><a href="guias.php">Guías de viaje</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/descubre/ofertas.php">Ofertas de última hora</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/descubre/destinos.php">Destinos populares</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/descubre/recomendaciones.php">Recomendaciones personalizadas</a></li>
+        <li><a href="/Viaje-APP/componentes/footer/descubre/guias.php">Guías de viaje</a></li>
       </ul>
     </div>
+
+  </div>
 
   </div>
 
