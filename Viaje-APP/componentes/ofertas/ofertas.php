@@ -14,6 +14,11 @@
 
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
 
+<?php
+require_once "/viaje/viaje/Viaje-APP/componentes/currency/convert.php";
+$precio = 3500;
+?>
+<p>Precio: <?php echo convertCurrency($precio); ?></p>
 
 
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>

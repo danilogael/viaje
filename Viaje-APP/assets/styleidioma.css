@@ -1,0 +1,71 @@
+/* -------------------------------------------------
+   ESTILOS DEL SELECTOR DE IDIOMA Y MONEDA
+   Esta parte crea los botones y los menús desplegables
+   que permiten al usuario elegir idioma y moneda
+---------------------------------------------------*/
+
+/* Contenedor general de ambos selectores */
+.language-selector, .currency-selector {
+    position: relative; /* Necesario para que los menús se acomoden debajo */
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+/* El texto del botón (Ejemplo: Español | MXN ) */
+.selector-btn {
+    background: #ffffff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #d3d3d3;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+/* Pequeño sombreado cuando pasas el mouse */
+.selector-btn:hover {
+    background: #f5f5f5;
+}
+
+/* -------------------------------------------------
+   MENÚ DESPLEGABLE
+   Esto aparece cuando el usuario toca el selector
+---------------------------------------------------*/
+.dropdown-list {
+    display: none; /* Oculto hasta que se active */
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 180px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Elementos dentro del menú */
+.dropdown-list li {
+    list-style: none;
+    padding: 10px 14px;
+    border-bottom: 1px solid #eeeeee;
+    transition: 0.2s;
+}
+
+/* Último elemento sin línea */
+.dropdown-list li:last-child {
+    border-bottom: none;
+}
+
+/* Cuando pasas el mouse */
+.dropdown-list li:hover {
+    background: #f0f0f0;
+}
+
+/* -------------------------------------------------
+   MOSTRAR EL MENÚ
+   Esta clase se activa con JS
+---------------------------------------------------*/
+.dropdown-list.show {
+    display: block; /* Se vuelve visible */
+}

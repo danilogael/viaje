@@ -19,6 +19,12 @@ $paquetes = $query->fetchAll(PDO::FETCH_ASSOC);
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+<?php
+require_once "/viaje/viaje/Viaje-APP/componentes/currency/convert.php";
+$precio = 3500;
+?>
+<p>Precio: <?php echo convertCurrency($precio); ?></p>
+
 :root {
 --primary-color: #21bbf3;
 --secondary-color: #1aa0d8;

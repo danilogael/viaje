@@ -1,5 +1,7 @@
 <footer>
   <div class="footer-container">
+    <script src="/viaje/viaje/Viaje-APP/assets/js/index.js"></script>
+
     <!-- SECCIÓN 1: Información principal -->
     <div class="footer-section">
       <h3>Remolinos Tours</h3>
