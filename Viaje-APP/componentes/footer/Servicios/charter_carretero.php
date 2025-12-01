@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="footer_pag.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicio de Charter Carretero | Mi Agencia</title>
+  <title>Servicio de Charter Carretero |Remolinos Tours</title>
 </head>
 
 <body>
@@ -48,6 +48,9 @@
   <footer class="footer">
     © 2025 Mi Agencia - Todos los derechos reservados
   </footer>
+
+  <!-- Aquí se incluye el footer -->
+  <?php include '../footer/footer.php'; ?>
 
 </body>
 </html>

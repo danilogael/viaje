@@ -46,6 +46,8 @@
     </div>
 
   </div>
+<?php include '../footer/footer.php'; ?>
+
 
   <!-- Pie de página -->
   <footer class="footer">

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="footer_pag.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentación para el Pasaporte | Mi Agencia</title>
+  <title>Documentación para el Pasaporte | Remolinos Tours</title>
 </head>
 
 <body>
@@ -42,6 +42,9 @@
   <footer class="footer">
     © 2025 Mi Agencia - Todos los derechos reservados
   </footer>
+
+  <!-- Aquí se incluye el footer -->
+  <?php include '../footer/footer.php'; ?>
 
 </body>
 </html>

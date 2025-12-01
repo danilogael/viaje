@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="footer_pag.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viajes Nacionales | Mi Agencia</title>
+  <title>Viajes Nacionales | Remolinos tours</title>
 </head>
 
 <body>
@@ -47,6 +47,9 @@
   <div class="footer">
     © 2025 Mi Agencia – Todos los derechos reservados.
   </div>
+
+  <!-- Aquí se incluye el footer -->
+  <?php include '../footer/footer.php'; ?>
 
 </body>
 </html>

@@ -1,7 +1,5 @@
 <footer>
   <div class="footer-container">
-    <script src="/viaje/viaje/Viaje-APP/assets/js/index.js"></script>
-
     <!-- SECCIÓN 1: Información principal -->
     <div class="footer-section">
       <h3>Remolinos Tours</h3>
@@ -57,8 +55,8 @@
       <ul>
         <li><a href="viaje/viaje/Viaje-APP/componentes/footer/descubre/ofertas.php">Ofertas de última hora</a></li>
         <li><a href="viaje/viaje/Viaje-APP/componentes/footer/descubre/destinos.php">Destinos populares</a></li>
-        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/descubre/recomendaciones.php">Recomendaciones personalizadas</a></li>
-        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/descubre/guias.php">Guías de viaje</a></li>
+        <li><a href="viaje/Viaje-APP/componentes/footer/descubre/recomendaciones.php">Recomendaciones personalizadas</a></li>
+        <li><a href="viaje/Viaje-APP/componentes/footer/descubre/guias.php">Guías de viaje</a></li>
       </ul>
     </div>
 
