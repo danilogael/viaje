@@ -42,7 +42,7 @@
 
     <!-- Botón para regresar -->
     <div style="text-align: center; margin-top: 30px;">
-      <a class="btn-regresar" href="index.html">Volver al inicio</a>
+      <a class="btn-regresar" href="footer.php">Volver al inicio</a>
     </div>
 
   </div>
