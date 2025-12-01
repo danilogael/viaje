@@ -1,6 +1,5 @@
 <footer>
   <div class="footer-container">
-
     <!-- SECCIÓN 1: Información principal -->
     <div class="footer-section">
       <h3>Remolinos Tours</h3>
@@ -29,12 +28,12 @@
     <div class="footer-section">
       <h3>Servicios</h3>
       <ul>
-        <li><a href="/Viaje-APP/componentes/footer/servicios/viajes_nacionales_pag.php">Viajes Nacionales e Internacionales</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/servicios/charter_carretero.php">Charter Carretero</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/servicios/pasaporte.php">Trámite de Pasaporte</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/servicios/ETA.php">ETA (Permiso para Canadá)</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/servicios/tours.php">Tours</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/servicios/traslados.php">Traslados y mucho más</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/servicios/viajes_nacionales_pag.php">Viajes Nacionales e Internacionales</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/servicios/charter_carretero.php">Charter Carretero</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/servicios/pasaporte.php">Trámite de Pasaporte</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/servicios/ETA.php">ETA (Permiso para Canadá)</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/servicios/tours.php">Tours</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/servicios/traslados.php">Traslados y mucho más</a></li>
       </ul>
     </div>
 
@@ -43,10 +42,10 @@
     <div class="footer-section">
       <h3>Ayuda</h3>
       <ul>
-        <li><a href="/Viaje-APP/componentes/footer/ayuda/centro_SO.php">Centro de soporte</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/ayuda/cancelaciones.php">Cancelaciones</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/ayuda/politica_PRIV.php">Política de privacidad</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/ayuda/terminos_CON.php">Términos y condiciones</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/ayuda/centro_SO.php">Centro de soporte</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/ayuda/cancelaciones.php">Cancelaciones</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/ayuda/politica_PRIV.php">Política de privacidad</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/ayuda/terminos_CON.php">Términos y condiciones</a></li>
       </ul>
     </div>
 
@@ -54,10 +53,10 @@
     <div class="footer-section">
       <h3>Descubre</h3>
       <ul>
-        <li><a href="/Viaje-APP/componentes/footer/descubre/ofertas.php">Ofertas de última hora</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/descubre/destinos.php">Destinos populares</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/descubre/recomendaciones.php">Recomendaciones personalizadas</a></li>
-        <li><a href="/Viaje-APP/componentes/footer/descubre/guias.php">Guías de viaje</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/descubre/ofertas.php">Ofertas de última hora</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/descubre/destinos.php">Destinos populares</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/descubre/recomendaciones.php">Recomendaciones personalizadas</a></li>
+        <li><a href="viaje/viaje/Viaje-APP/componentes/footer/descubre/guias.php">Guías de viaje</a></li>
       </ul>
     </div>
 
