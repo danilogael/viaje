@@ -61,5 +61,7 @@
     © 2025 Remolinos Tours – Todos los derechos reservados.
   </div>
 
+  <!-- Aquí se incluye el footer -->
+
 </body>
 </html>

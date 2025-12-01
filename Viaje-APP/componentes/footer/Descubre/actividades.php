@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="footer_pag.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Actividades en el Destino | Mi Agencia</title>
+  <title>Actividades en el Destino | Remolinos Tours</title>
 </head>
 
 <body>
@@ -53,6 +53,9 @@
   <footer class="footer">
     © 2025 Mi Agencia - Todos los derechos reservados
   </footer>
+
+  <!-- Aquí se incluye el footer -->
+  <?php include '../footer/footer.php'; ?>
 
 </body>
 </html>
