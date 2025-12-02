@@ -17,3 +17,4 @@ document.querySelector("#formContacto").addEventListener("submit", async (e) => 
         alert("Error al enviar el mensaje");
     }
 });
+

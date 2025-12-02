@@ -46,3 +46,4 @@ $currentCurrency = $_SESSION['currency'];
 <!-- JS -->
 <script src="/viaje/viaje/Viaje-APP/componentes/js/header.js"></script>
 <script src="/viaje/viaje/Viaje-APP/componentes/js/currency.js"></script>
+<script src="/viaje/viaje/Viaje-APP/assets/js/index.js"></script>
