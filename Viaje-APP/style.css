@@ -262,93 +262,6 @@ html{
     color: #555;
 }
 
-
-   .reviews .box-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap:1.5rem;
-}
-.reviews .box-container .box{
-    flex:1 1 30rem;
-    box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
-    border-radius: .5rem;   
-    padding:3rem 2rem;
-   position:relative;
-   border:.1rem solid rgba(0,0,0,.1);
-}
-.reviews .box-container .box .fa-quote-right{
-position:absolute;
-bottom:3rem;right:3rem;
-font-size: 6rem;
-color:#eee;    
-}
-.reviews .box-container .box .stars i{
-    color:var(--blue);
-    font-size: 2rem;
-}
-.reviews .box-container .box p{
-    color:#999;
-    font-size: 1.5rem;
-    line-height: 1.5;
-    padding-top:2rem;
-}
-.reviews .box-container .box .user{
-    display: flex;
-    align-items: center;
-    padding-top:2rem;
-}
-.reviews .box-container .box .user img{
-    height: 6rem;
-    width:6rem;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right:1rem;}
-.reviews .box-container .box .user h3{
-    font-size: 2rem;
-    color: #333;
-}
-
-.reviews .box-container .box .user span{
-    font-size: 1.5rem;
-    color: #999;
-}
-.contact .row{
-    display: flex;
-    flex-wrap: wrap;
-    gap:1.5rem;
-}  
-.contact .row form{
-    flex:1 1 40rem;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
-    padding:2rem 2.5rem;
-    border:.1rem solid rgba(0,0,0,.1);
-    background: #fff;
-    border-radius:.5rem;
-   
-}
-.contact .row .image{
-    flex:1 1 40rem;
-} 
-.contact .row .image img{
-    width: 100%;
-}
-.contact .row form .box{
-   padding: 1rem;
-    font-size: 1.7rem;
-    color: #333;
-    text-transform: none;
-    border:.1rem solid rgba(0,0,0,.1);
-    border-radius: .5rem;
-    margin:.7rem 0;
-    width: 100%;
-}
-.contact .row form .box:focus{
-    border-color: var(--blue);
-}
-.contact .row form textarea{
-    height: 15rem;
-    resize: none;
-}
 /* ---------- Imagen y tarjeta premium ---------- */
 .products .box-container .box {
     flex: 1 1 30rem;
@@ -472,4 +385,91 @@ color:#eee;
     color: #888;
     text-decoration: line-through;
     margin-left: .5rem;
+}
+
+   .reviews .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+}
+.reviews .box-container .box{
+    flex:1 1 30rem;
+    box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+    border-radius: .5rem;   
+    padding:3rem 2rem;
+   position:relative;
+   border:.1rem solid rgba(0,0,0,.1);
+}
+.reviews .box-container .box .fa-quote-right{
+position:absolute;
+bottom:3rem;right:3rem;
+font-size: 6rem;
+color:#eee;    
+}
+.reviews .box-container .box .stars i{
+    color:var(--blue);
+    font-size: 2rem;
+}
+.reviews .box-container .box p{
+    color:#999;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    padding-top:2rem;
+}
+.reviews .box-container .box .user{
+    display: flex;
+    align-items: center;
+    padding-top:2rem;
+}
+.reviews .box-container .box .user img{
+    height: 6rem;
+    width:6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right:1rem;}
+.reviews .box-container .box .user h3{
+    font-size: 2rem;
+    color: #333;
+}
+
+.reviews .box-container .box .user span{
+    font-size: 1.5rem;
+    color: #999;
+}
+.contact .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+}  
+.contact .row form{
+    flex:1 1 40rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    padding:2rem 2.5rem;
+    border:.1rem solid rgba(0,0,0,.1);
+    background: #fff;
+    border-radius:.5rem;
+   
+}
+.contact .row .image{
+    flex:1 1 40rem;
+} 
+.contact .row .image img{
+    width: 100%;
+}
+.contact .row form .box{
+   padding: 1rem;
+    font-size: 1.7rem;
+    color: #333;
+    text-transform: none;
+    border:.1rem solid rgba(0,0,0,.1);
+    border-radius: .5rem;
+    margin:.7rem 0;
+    width: 100%;
+}
+.contact .row form .box:focus{
+    border-color: var(--blue);
+}
+.contact .row form textarea{
+    height: 15rem;
+    resize: none;
 }

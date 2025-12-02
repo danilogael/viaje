@@ -1,438 +1,599 @@
 <?php
-// ================= INICIO DE PHP =================
-require __DIR__ . "/../../../LoginAPI/db.php"; // conexión
-include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php");
-
-// Consulta paquetes sin descuento
-$query = $conexion->query("SELECT * FROM paquetes WHERE descuento = 0 ORDER BY nombre");
-$paquetes = $query->fetchAll(PDO::FETCH_ASSOC);
+session_start();
+$nombre = $_SESSION['nombre'] ?? 'Usuario';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Descubre Paquetes</title>
-<link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
-<link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/estilos_footer.css">
-<link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/productos.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-:root {
---primary-color: #21bbf3;
---secondary-color: #1aa0d8;
---background-light: #f5f7fa;
---text-color: #2c3e50;
---grey-text: #6c757d;
---shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
---hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
---border-radius: 0.8rem;
---star-color: gold;
-}
-
-body {
-font-family: 'Poppins', sans-serif;
-background-color: var(--background-light);
-color: var(--text-color);
-margin: 0;
-padding: 0;
-line-height: 1.6;
-}
-
-/* =================== ENCABEZADO =================== */
-.heading {
-text-align: center;
-padding: 2rem 0;
-font-size: 3rem;
-font-weight: 700;
-color: var(--text-color);
-margin-top: 4rem;
-margin-bottom: 3rem;
-}
-
-.heading span {
-color: var(--primary-color);
-}
-
-/* =================== LUPA (Diseño anterior, borde al lado derecho) =================== */
-.filtro-lupa {
-position: fixed;
-top: 50%;
-right: 0; /* Pegado al borde */
-transform: translateY(-50%);
-background: var(--primary-color);
-color: #fff;
-width: 56px;
-height: 56px;
-display: flex;
-justify-content: center;
-align-items: center;
-/* Revertido al diseño anterior */
-border-radius: 0.8rem 0 0 0.8rem; 
-cursor: pointer;
-box-shadow: var(--shadow);
-z-index: 10000; 
-transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
-}
-
-.filtro-lupa i {
-    font-size: 1.5rem;
-}
-
-.filtro-lupa:hover {
-background: var(--secondary-color);
-transform: translateY(-50%) scale(1.05); 
-box-shadow: var(--hover-shadow);
-}
-
-/* =================== PANEL DE FILTRO (Escondido completamente) =================== */
-.filtro-panel {
-position: fixed;
-top: 50%;
-/* CLAVE: Esconder el panel fuera de la vista (Ancho 300px + 2rem padding x2) */
-right: -360px; 
-transform: translateY(-50%);
-background: #fff;
-padding: 2.5rem 2rem;
-/* Diseño que se pega al borde */
-border-radius: 1rem 0 0 1rem;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-width: 300px;
-display: flex;
-flex-direction: column;
-gap: 1.2rem;
-z-index: 9999;
-transition: right 0.4s ease-in-out;
-}
-
-.filtro-panel.active {
-/* Muestra el panel, dejando visible el ancho de la lupa (56px) */
-right: 56px; 
-}
-
-/* Botón de Cierre dentro del panel (Lo mantenemos por usabilidad) */
-.close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    color: var(--grey-text);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-.close-btn:hover {
-    color: var(--text-color);
-}
-
-.filtro-panel h3 {
-font-size: 1.8rem;
-color: var(--primary-color);
-margin-top: 0;
-margin-bottom: 1rem;
-border-bottom: 2px solid #eee;
-padding-bottom: 0.5rem;
-}
-
-.filtro-panel label {
-font-weight: 600;
-font-size: 0.9rem;
-color: var(--text-color);
-}
-
-.filtro-panel input[type="text"],
-.filtro-panel input[type="number"] {
-padding: 0.9rem;
-width: 100%;
-border: 1px solid #ddd;
-border-radius: 0.5rem;
-font-size: 1rem;
-background: #f9fafc;
-transition: border-color 0.3s ease;
-}
-
-.filtro-panel input:focus {
-border-color: var(--primary-color);
-outline: none;
-box-shadow: 0 0 6px rgba(33, 187, 243, 0.3);
-}
-
-.filtro-panel button {
-padding: 1rem;
-background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-color: white;
-border: none;
-border-radius: 0.5rem;
-cursor: pointer;
-font-size: 1.1rem;
-font-weight: 600;
-margin-top: 1rem;
-transition: opacity 0.3s ease, transform 0.2s ease;
-}
-
-.filtro-panel button:hover {
-opacity: 0.9;
-transform: translateY(-2px);
-}
-
-/* =================== GRID DE PRODUCTOS =================== */
-.box-container {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-gap: 3rem;
-max-width: 1200px;
-margin: 0 auto 5rem auto;
-padding: 0 2%;
-}
-
-/* =================== TARJETA DE PAQUETE (Se mantiene el diseño mejorado) =================== */
-.box {
-background: #fff;
-border-radius: var(--border-radius);
-box-shadow: var(--shadow);
-overflow: hidden;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-display: flex;
-flex-direction: column;
-}
-
-.box:hover {
-transform: translateY(-8px);
-box-shadow: var(--hover-shadow);
-}
-
-.box .img {
-    position: relative;
-    height: 25rem;
-    overflow: hidden;
-}
-
-.box .img img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-transition: transform 0.5s ease;
-}
-.box:hover .img img {
-    transform: scale(1.05);
-}
-
-.box .img .icons {
-    position: absolute;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    transition: bottom 0.3s ease;
-}
-.box:hover .img .icons {
-    bottom: 0;
-}
-
-.box .img .icons a {
-    color: white;
-    font-size: 1.5rem;
-    transition: color 0.2s;
-    flex-shrink: 0;
-    padding: 0.5rem;
-}
-.box .img .icons a:hover {
-    color: var(--primary-color);
-}
-
-.box .img .icons .cart-btn {
-    flex-grow: 1;
-    margin: 0 1rem;
-    padding: 0.6rem 1rem;
-    background: var(--primary-color);
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    transition: background 0.3s;
-}
-.box .img .icons .cart-btn:hover {
-    background: var(--secondary-color);
-}
-
-
-.box .content {
-padding: 1.5rem;
-text-align: left;
-flex-grow: 1;
-display: flex;
-flex-direction: column;
-}
-
-.box h3 {
-font-size: 1.5rem;
-color: var(--text-color);
-margin-bottom: 0.5rem;
-}
-
-.box .ubicacion {
-font-size: 0.9rem;
-color: var(--grey-text);
-margin-bottom: 0.5rem;
-display: block;
-}
-
-.box .ubicacion i {
-    color: var(--primary-color);
-    margin-right: 0.3rem;
-}
-
-.box .duracion,
-.box .categoria {
-font-size: 0.9rem;
-color: var(--grey-text);
-margin-bottom: 0.3rem;
-}
-
-.box .rating {
-font-size: 1.2rem;
-color: var(--star-color);
-margin: 0.8rem 0;
-margin-top: auto;
-}
-
-.box .price {
-font-size: 2rem;
-color: var(--secondary-color);
-font-weight: 700;
-margin-top: 0.5rem;
-}
-
-/* =================== RESPONSIVE =================== */
-@media (max-width: 768px) {
-  /* La lupa se vuelve totalmente circular en móvil */
-.filtro-lupa {
-top: 90%;
-right: 1rem;
-transform: translateY(-50%);
-border-radius: 50%; /* Circular en móvil */
-}
-  /* El panel se oculta fuera y se centra al activarse */
-.filtro-panel {
-right: -450px;
-top: 50%;
-left: auto;
-transform: translateY(-50%);
-width: 90%;
-max-width: 400px;
-padding: 1.5rem;
-border-radius: 1rem; /* Borde completo en móvil */
-}
-
-.filtro-panel.active {
-right: 50%;
-left: auto;
-transform: translate(50%, -50%);
-}
-    .box .img {
-        height: 20rem;
-    }
-.box-container {
-grid-template-columns: 1fr;
-}
-}
-</style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Ofertas de Fin de Año - Remolinos Tours</title>
+ 
+ <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/paquetes/paquete.css">
+ <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/header.css">
+ <link rel="stylesheet" href="/viaje/viaje/Viaje-APP/componentes/estilos/estilos_footer.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<div class="filtro-lupa" onclick="toggleFiltro()">
- <i class="fas fa-magnifying-glass"></i>
-</div>
-
-<div class="filtro-panel" id="filtroPanel">
-    <button class="close-btn" onclick="toggleFiltro()"><i class="fas fa-times"></i></button>
-<h3>Filtrar Paquetes</h3>
-<label for="filtroCiudad">Ciudad / Estado</label>
-<input type="text" id="filtroCiudad" placeholder="Ej: Cancún">
-<label for="filtroPrecio">Precio máximo (MXN)</label>
-<input type="number" id="filtroPrecio" placeholder="Ej: 15000">
-<label for="filtroDias">Duración máxima (días)</label>
-<input type="number" id="filtroDias" placeholder="Ej: 5">
-<label for="filtroCategoria">Categoría / Hotel</label>
-<input type="text" id="filtroCategoria" placeholder="Ej: All Inclusive">
-<button onclick="aplicarFiltro()">Aplicar Filtros</button>
-</div>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
 
 <section class="products" id="products">
-<h1 class="heading">Descubre nuestros <span>Paquetes</span></h1>
-<div class="box-container" id="boxContainer">
-<?php foreach($paquetes as $p): ?>
-<div class="box" 
- data-ciudad="<?= htmlspecialchars($p['ciudad']) ?>" 
- data-precio="<?= htmlspecialchars($p['precio']) ?>" 
- data-dias="<?= htmlspecialchars($p['duracion_dias']) ?>" 
- data-categoria="<?= htmlspecialchars($p['categoria']) ?>">
- <div class="img">
-<img src="<?= htmlspecialchars($p['imagen']) ?>" alt="<?= htmlspecialchars($p['nombre']) ?>">
-<div class="icons">
- <a href="#" class="fas fa-heart" title="Añadir a favoritos"></a>
- <a href="#" class="cart-btn" title="Ver detalles del paquete">Detalles</a>
- <a href="#" class="fas fa-share" title="Compartir"></a>
-</div>
- </div>
- <div class="content">
- <h3><?= htmlspecialchars($p['nombre']) ?></h3>
- <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($p['ciudad']) ?></span>
- <p class="duracion"><?= htmlspecialchars($p['duracion_dias']) ?> días</p>
- <p class="categoria"><?= htmlspecialchars($p['categoria']) ?></p>
- <div class="rating"><?= str_repeat('★', $p['calificacion']) . str_repeat('☆', 5 - $p['calificacion']) ?></div>
- <div class="price">$<?= number_format($p['precio'], 0, '.', ',') ?> MXN</div>
- </div>
-</div>
-<?php endforeach; ?>
-</div>
+  <h1 class="titulo-ofertas">Descubre nuestras <span>Ofertas</span></h1>
+  <div class="box-container">
+
+        <div class="box">
+     
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cancun">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/viajes internacionales/Alemania/Al1.jpg" alt="Vista principal de Alemania">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/viajes internacionales/Alemania/Al2.jpg" alt="alemania">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/viajes internacionales/Alemania/Al3.jpg" alt="alemania">
+        </div>
+        
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cancun" aria-label="Imagen anterior"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cancun" aria-label="Imagen siguiente"></button>
+        <div class="icons">
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Alemania</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Berlin</span>
+        <p class="duracion">7 días · 6 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$23,000 MXN </div>
+        
+                <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-user"></i> Paquete para 2 personas.</li>
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+            <li><i class="fas fa-user"></i> Paquete para 2 personas.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+        
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+
+        <div class="box">
+     
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="vallarta">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/viajes internacionales/España/Es1.jpg" alt="España ciudad">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/viajes internacionales/España/Es2.jpg" alt="España ">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/viajes internacionales/España/Es3.jpg" alt="España ciudad">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="vallarta" aria-label="Imagen anterior"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="vallarta" aria-label="Imagen siguiente"></button>
+        <div class="icons">
+         
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Puerto Vallarta</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Jalisco</span>
+        <p class="duracion">4 días · 3 noches</p>
+        <p class="categoria">Hotel 4★</p>
+        <div class="rating">★★★★</div>
+        <div class="price">$2400 MXN <span>$2800 MXN</span></div>
+        
+                <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-mug-hot"></i> Desayuno buffet diario.</li>
+            <li><i class="fas fa-car"></i> Traslado gratuito al malecón.</li>
+            <li><i class="fas fa-utensils"></i> Una cena especial en restaurante del hotel.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** Boletos de avión no incluidos.
+          </p>
+        </div>
+        
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+     
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+     
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+     
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+  
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+     
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+     
+
+      <div class="img carrusel">
+        <div class="carrusel-slide-wrapper" data-carrusel-id="cabos">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png">
+          <img src="/viaje/viaje/Viaje-APP/imagenes/cancun-2.jpg">
+        </div>
+        <button class="carrusel-btn prev fas fa-chevron-left" data-carrusel-target="cabos"></button>
+        <button class="carrusel-btn next fas fa-chevron-right" data-carrusel-target="cabos"></button>
+        <div class="icons">
+         
+        
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Los Cabos</h3>
+        <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
+        <p class="duracion">3 días · 2 noches</p>
+        <p class="categoria">All Inclusive</p>
+        <div class="rating">★★★★☆</div>
+        <div class="price">$2100 MXN <span>$2600 MXN</span></div>
+
+        <div class="extra-details">
+          <ul class="details-list">
+            <li><i class="fas fa-plane"></i> Vuelos redondos incluidos.</li>
+            <li><i class="fas fa-hotel"></i> Hospedaje 5 estrellas (Todo Incluido).</li>
+            <li><i class="fas fa-cocktail"></i> Barra libre y alimentos gourmet.</li>
+            <li><i class="fas fa-bus-alt"></i> Traslados aeropuerto-hotel y viceversa.</li>
+          </ul>
+          <p class="details-note">
+            <i class="fas fa-exclamation-circle"></i> **Importante:** No incluye tours opcionales ni propinas.
+          </p>
+        </div>
+
+        <div class="box-actions">
+          <a href="#" class="btn details-btn">Ver más detalles</a>
+          <a href="#" class="btn reserve-btn">¡Reservar ahora!</a>
+        </div>
+      </div>
+    </div>
+    </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Lógica de los botones manuales (tu código actual mejorado)
+    document.querySelectorAll('.reserve-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          <?php if (!isset($_SESSION['user_id'])) { ?>
+                // Si NO está logueado: Lo mandamos al login pero con un "aviso" en la URL
+                Swal.fire({
+                  icon: 'warning',
+                  title: 'Debes iniciar sesión',
+                  text: 'Para reservar, primero inicia sesión.',
+                  confirmButtonText: 'Ir al Login'
+                }).then(()=> {
+                    // OJO AQUÍ: Agregamos ?origen=reserva a la URL
+                    window.location.href="/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php?origen=reserva";
+                });
+
+          <?php } else { ?>
+                // Si YA está logueado: Muestra el éxito
+                mostrarAlertaExito();
+          <?php } ?>
+      });
+    });
+
+    // 2. Lógica AUTOMÁTICA (El truco)
+    // Verifica si en la URL hay una variable "reserva_pendiente=si"
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('reserva_pendiente') === 'si') {
+        mostrarAlertaExito();
+    }
+
+    // Función para no repetir código
+    function mostrarAlertaExito() {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Solicitud recibida!',
+          html: 'Gracias <b><?php echo $_SESSION["nombre"] ?? ""; ?></b>,<br> en un momento nuestro equipo te contactará para darle seguimiento a tu reserva.',
+          confirmButtonText: 'Aceptar'
+        }).then(() => {
+            // Limpiamos la URL para que no salga la alerta si recarga la página
+            window.history.replaceState({}, document.title, window.location.pathname);
+        });
+    }
+});
+</script>
+
 
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/footer/footer.php"); ?>
-
-<script>
-function toggleFiltro() {
-const panel = document.getElementById('filtroPanel');
-panel.classList.toggle('active');
-}
-
-function aplicarFiltro() {
-const ciudad = document.getElementById('filtroCiudad').value.toLowerCase().trim();
-const precio = parseFloat(document.getElementById('filtroPrecio').value) || Infinity;
-const dias = parseInt(document.getElementById('filtroDias').value) || Infinity;
-const categoria = document.getElementById('filtroCategoria').value.toLowerCase().trim();
-
-const boxes = document.querySelectorAll('.box-container .box');
-
-boxes.forEach(box => {
-const boxCiudad = box.dataset.ciudad.toLowerCase();
-const boxPrecio = parseFloat(box.dataset.precio);
-const boxDias = parseInt(box.dataset.dias);
-const boxCategoria = box.dataset.categoria.toLowerCase();
-
-const cumpleCiudad = boxCiudad.includes(ciudad);
-    const cumplePrecio = boxPrecio <= precio;
-    const cumpleDias = boxDias <= dias;
-    const cumpleCategoria = boxCategoria.includes(categoria);
-
-box.style.display = (cumpleCiudad && cumplePrecio && cumpleDias && cumpleCategoria) ? 'flex' : 'none';
-});
-}
-
-// Filtro dinámico mientras se escribe
-['filtroCiudad', 'filtroPrecio', 'filtroDias', 'filtroCategoria'].forEach(id => {
-document.getElementById(id).addEventListener('input', aplicarFiltro);
-});
-
-// Asegura que los paquetes se muestren al cargar
-document.addEventListener('DOMContentLoaded', aplicarFiltro);
-</script>
+<script src="/viaje/viaje/Viaje-APP/componentes/js/header.js"></script>
+<script src="/viaje/viaje/Viaje-APP/componentes/paquetes/paquete.js"></script>
 </body>
 </html>

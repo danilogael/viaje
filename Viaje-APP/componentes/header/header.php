@@ -23,15 +23,8 @@ $currentCurrency = $_SESSION['currency'];
       <li><a href="/viaje/viaje/Viaje-APP/componentes/Planea/planea.php">Planea tu viaje</a></li>
       <li><a href="/viaje/viaje/Viaje-APP/componentes/ofertas/ofertas.php">Ofertas</a></li>
 
-      <!-- Selector de Moneda -->
-      <li class="currency-menu">
-        <button id="currency-btn"><?php echo $currentCurrency; ?></button>
-        <ul class="currency-dropdown">
-          <li data-currency="MXN">MXN</li>
-          <li data-currency="USD">USD</li>
-          <li data-currency="EUR">EUR</li>
-        </ul>
-      </li>
+      <div id="google_translate_element" class="text-sm p-2">
+    </div>
 
       <?php if (isset($_SESSION['user_id'])): ?>
         <li class="user-menu">
@@ -40,7 +33,7 @@ $currentCurrency = $_SESSION['currency'];
           </div>
           <ul class="dropdown">
             <li><a href="/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php">Mi perfil</a></li>
-            <li><a href="/viaje/viaje/LoginAPI/logOut.php">Cerrar sesión</a></li>
+            <li><a href="/viaje/viaje/LoginAPI/login/logOut.php">Cerrar sesión</a></li>
           </ul>
         </li>
       <?php else: ?>

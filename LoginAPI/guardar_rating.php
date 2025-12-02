@@ -1,43 +1,53 @@
 <?php
-require_once __DIR__ . "/db.php";
+session_start();
+header('Content-Type: application/json');
+require __DIR__ . "/db.php"; // Ajusta la ruta si es necesario
 
-$foto = null;
-
-if(!empty($_FILES["foto"]["name"])){
-
-    if($_FILES["foto"]["size"] > 3000000){
-        die("La imagen es demasiado grande (máximo 3MB).");
+try {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        echo json_encode(["success" => false, "message" => "Método no permitido"]);
+        exit;
     }
 
-    $permitidos = ["image/jpeg","image/png","image/jpg"];
+    $nombre   = $_POST['nombre'] ?? null;
+    $destino  = $_POST['destino'] ?? null;
+    $dias     = $_POST['dias'] ?? null;
+    $calificacion = $_POST['rating'] ?? null;
+    $mensaje  = $_POST['mensaje'] ?? null;
 
-    if(!in_array($_FILES["foto"]["type"], $permitidos)){
-        die("Solo se permiten imágenes JPG y PNG.");
+    if (!$nombre || !$destino || !$dias || !$calificacion || !$mensaje) {
+        echo json_encode(["success" => false, "message" => "Todos los campos son obligatorios"]);
+        exit;
     }
 
-    $carpeta = __DIR__ . "/fotos/";
+    $foto = null;
+    if (!empty($_FILES["foto"]["name"])) {
+        if ($_FILES["foto"]["size"] > 3000000) {
+            echo json_encode(["success" => false, "message" => "La imagen es demasiado grande (máximo 3MB)"]);
+            exit;
+        }
 
-    if(!file_exists($carpeta)){
-        mkdir($carpeta,0777,true);
+        $permitidos = ["image/jpeg","image/png","image/jpg"];
+        if (!in_array($_FILES["foto"]["type"], $permitidos)) {
+            echo json_encode(["success" => false, "message" => "Solo se permiten imágenes JPG y PNG"]);
+            exit;
+        }
+
+        $carpeta = __DIR__ . "/fotos/";
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+
+        $nombreArchivo = time() . "_" . $_FILES["foto"]["name"];
+        $foto = "fotos/" . $nombreArchivo;
+        move_uploaded_file($_FILES["foto"]["tmp_name"], $carpeta . $nombreArchivo);
     }
 
-    $nombre = time() . "_" . $_FILES["foto"]["name"];
-    $foto = "fotos/" . $nombre;
+    $sql = "INSERT INTO reseñas (nombre, destino, dias, calificacion, mensaje, foto) VALUES (?,?,?,?,?,?)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->execute([$nombre, $destino, $dias, $calificacion, $mensaje, $foto]);
 
-    move_uploaded_file($_FILES["foto"]["tmp_name"], $carpeta . $nombre);
+    echo json_encode(["success" => true, "message" => "Reseña guardada correctamente"]);
+} catch (Exception $e) {
+    echo json_encode(["success" => false, "message" => "Error al guardar la reseña: " . $e->getMessage()]);
 }
-
-$sql = "INSERT INTO reseñas (nombre, destino, dias, calificacion, mensaje, foto)
-        VALUES (?,?,?,?,?,?)";
-
-$stmt = $conexion->prepare($sql);
-$stmt->execute([
-    $_POST["nombre"],
-    $_POST["destino"],
-    $_POST["dias"],
-    $_POST["rating"],
-    $_POST["mensaje"],
-    $foto
-]);
-
-echo "✔ Reseña guardada correctamente!";

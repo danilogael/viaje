@@ -69,291 +69,158 @@ contamos con Registro nacional de turismo vigente!.</p>
     </div>
 </section>
 
-
 <section class="products" id="products">
     <h1 class="heading"><span>Ofertas</span></h1>
 
-    <div class="box-container">
-
-        <!-- TARJETA #1 -->
-        <div class="box">
-            <span class="discount">-10%</span>
-
-            <div class="img">
-                <img src="/viaje/viaje/Viaje-APP/imagenes/cancun.png" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">Detalles</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h3>Cancún</h3>
-                <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Quintana Roo</span>
-                <p class="duracion">3 días · 2 noches</p>
-                <p class="categoria">All Inclusive</p>
-                <div class="rating">★★★★☆</div>
-                <div class="price">$1200 MXN <span>$1700 MXN</span></div>
-            </div>
+    <div class="promo-box" style="
+        width:90%;
+        max-width:900px;
+        margin:0 auto;
+        padding:0;
+        border:1px solid #dcdcdc;
+        border-radius:12px;
+        background:#fff;
+        display:flex;
+        justify-content:space-between;
+        overflow:hidden;
+        margin-top:30px;
+    ">
+        
+        <!-- imagen -->
+        <div style="width:50%; height:220px; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+            style="width:100%; height:100%; object-fit:cover;">
         </div>
 
-        <!-- TARJETA #2 -->
-        <div class="box">
-            <span class="discount">-15%</span>
+        <!-- texto + botón -->
+        <div style="width:50%; padding:25px; text-align:left;">
+            
+            <h2 style="
+                font-size:2rem;
+                font-weight:600;
+                margin-bottom:10px;
+                color:#222;
+            ">
+                Promociones Especiales
+            </h2>
 
-            <div class="img">
-                <img src="/viaje/viaje/Viaje-APP/imagenes/puerto_vallarta.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">Detalles</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
+            <p style="
+                font-size:1.5rem;
+                color:#555;
+                margin-bottom:25px;
+                line-height:1.5;
+            ">
+                Descubre destinos con precios únicos.<br>
+                Viaja sin complicarte.
+            </p>
 
-            <div class="content">
-                <h3>Puerto Vallarta</h3>
-                <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Jalisco</span>
-                <p class="duracion">4 días · 3 noches</p>
-                <p class="categoria">Hotel 4★</p>
-                <div class="rating">★★★★★</div>
-                <div class="price">$2400 MXN <span>$2800 MXN</span></div>
-            </div>
+            <a href="/viaje/viaje/Viaje-APP/componentes/ofertas/ofertas.php"
+style="
+    display:inline-block;
+    padding:14px 38px;
+    border-radius:28px;
+    background:#066cff;
+    color:#fff;
+    text-decoration:none;
+    font-size:1.05rem;
+    font-weight:500;
+">
+    Ver Ofertas
+</a>
+
+
         </div>
-
-        <!-- TARJETA #3 -->
-        <div class="box">
-            <span class="discount">-5%</span>
-
-            <div class="img">
-                <img src="/viaje/viaje/Viaje-APP/imagenes/los_cabos.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">Detalles</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h3>Los Cabos</h3>
-                <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Baja California Sur</span>
-                <p class="duracion">2 días · 1 noche</p>
-                <p class="categoria">Hotel Boutique</p>
-                <div class="rating">★★★★☆</div>
-                <div class="price">$1800 MXN <span>$1900 MXN</span></div>
-            </div>
-        </div>
-
-        <!-- TARJETA #4 -->
-        <div class="box">
-            <span class="discount">-20%</span>
-
-            <div class="img">
-                <img src="/viaje/viaje/Viaje-APP/imagenes/mazatlan.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">Detalles</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h3>Mazatlán</h3>
-                <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Sinaloa</span>
-                <p class="duracion">5 días · 4 noches</p>
-                <p class="categoria">All Inclusive</p>
-                <div class="rating">★★★☆☆</div>
-                <div class="price">$3000 MXN <span>$3800 MXN</span></div>
-            </div>
-        </div>
-
-        <!-- TARJETA #5 -->
-        <div class="box">
-            <span class="discount">-12%</span>
-
-            <div class="img">
-                <img src="/viaje/viaje/Viaje-APP/imagenes/acapulco.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">Detalles</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h3>Acapulco</h3>
-                <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Guerrero</span>
-                <p class="duracion">3 días · 2 noches</p>
-                <p class="categoria">Hotel Económico</p>
-                <div class="rating">★★★☆☆</div>
-                <div class="price">$950 MXN <span>$1200 MXN</span></div>
-            </div>
-        </div>
-
-        <!-- TARJETA #6 -->
-        <div class="box">
-            <span class="discount">-15%</span>
-
-            <div class="img">
-                <img src="/viaje/viaje/Viaje-APP/imagenes/ags.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">Detalles</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h3>Aguascalientes</h3>
-                <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Aguascalientes</span>
-                <p class="duracion">2 días · 1 noche</p>
-                <p class="categoria">Hotel Boutique</p>
-                <div class="rating">★★★★★</div>
-                <div class="price">$1400 MXN <span>$1650 MXN</span></div>
-            </div>
-        </div>
-
-        <!-- TARJETA #7 -->
-        <div class="box">
-            <span class="discount">-25%</span>
-
-            <div class="img">
-                <img src="/viaje/viaje/Viaje-APP/imagenes/guanajuato.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">Detalles</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h3>Guanajuato Capital</h3>
-                <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Guanajuato</span>
-                <p class="duracion">3 días · 2 noches</p>
-                <p class="categoria">City Tour</p>
-                <div class="rating">★★★★☆</div>
-                <div class="price">$1100 MXN <span>$1400 MXN</span></div>
-            </div>
-        </div>
-
-        <!-- TARJETA #8 -->
-        <div class="box">
-            <span class="discount">-30%</span>
-
-            <div class="img">
-                <img src="/viaje/viaje/Viaje-APP/imagenes/huatulco.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">Detalles</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h3>Huatulco</h3>
-                <span class="ubicacion"><i class="fas fa-map-marker-alt"></i> Oaxaca</span>
-                <p class="duracion">4 días · 3 noches</p>
-                <p class="categoria">Playa & Relax</p>
-                <div class="rating">★★★★☆</div>
-                <div class="price">$2500 MXN <span>$2800 MXN</span></div>
-            </div>
-        </div>
-
     </div>
-
-    <center>
-        <a href="/viaje/viaje/Viaje-APP/componentes/ofertas/ofertas.php" class="btn">
-            Ver todas las ofertas
-        </a>
-    </center>
 </section>
 
 
 
 <section class="reviews" id="reviews">
-    <h1 class="heading"><span>Reseñas </span></h1>
+    <h1 class="heading"><span>Lo que dicen nuestros viajeros</span></h1>
     <div class="box-container">
+        
         <div class="box">
-        <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>
+                "El paquete a Cancún fue increíble. El hotel 'Todo Incluido' superó nuestras expectativas y los traslados fueron puntuales. La atención del equipo de Remolinos Tours es de 5 estrellas. ¡Volveremos a viajar con ustedes!"
+            </p>
+            <div class="user">
+                <img src="/viaje/viaje/Viaje-APP/imagenes/persona1.jpg" alt="Foto de María P.">
+                <div class="user-info"> 
+                    <h3>María P.</h3>
+                    <span>Viaje a Cancún</span>
+                </div>
+            </div> 
+            <span class="fas fa-quote-right"></span>
         </div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis incidunt eius nihil rerum dolor
-             nisi aliquid natus exercitationem! Optio a iusto eos cum ratione eius commodi ut placeat libero!
-              Minima.</p>
-              <div class="user">
-            <img src="/viaje/viaje/Viaje-APP/imagenes/persona1.jpg" alt="">
-            <div class="user-info"> 
-                <h3>john deo</h3>
-                
-              </div>
-              </div> 
-              <span class="fas fa-quote-right"></span>
-    </div>
-     <div class="box">
-        <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+        
+        <div class="box">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i> </div>
+            <p>
+                "La ruta por la Toscana que nos armaron fue mágica. Hubo un pequeño retraso con el tren en Florencia, pero el soporte 24/7 lo solucionó al instante. ¡Servicio impecable y destinos soñados!"
+            </p>
+            <div class="user">
+                <img src="/viaje/viaje/Viaje-APP/imagenes/persona2.jpg" alt="Foto de Raúl G.">
+                <div class="user-info"> 
+                    <h3>Raúl G.</h3>
+                    <span>Tour por Italia</span>
+                </div>
+            </div> 
+            <span class="fas fa-quote-right"></span>
         </div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis incidunt eius nihil rerum dolor
-             nisi aliquid natus exercitationem! Optio a iusto eos cum ratione eius commodi ut placeat libero!
-              Minima.</p>
-              <div class="user">
-            <img src="/viaje/viaje/Viaje-APP/imagenes/persona2.jpg" alt="">
-            <div class="user-info"> 
-                <h3>john deo</h3>
-                
-              </div>
-              </div> 
-              <span class="fas fa-quote-right"></span>
-    </div>
-     <div class="box">
-        <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+        
+        <div class="box">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i> </div>
+            <p>
+                "Mi primer viaje a Japón fue inolvidable. El itinerario estaba muy bien organizado, aunque nos hubiera gustado tener más tiempo libre en Kioto. Los guías locales que nos recomendaron eran expertos."
+            </p>
+            <div class="user">
+                <img src="/viaje/viaje/Viaje-APP/imagenes/persona3.jpg" alt="Foto de Susana M.">
+                <div class="user-info"> 
+                    <h3>Susana M.</h3>
+                    <span>Viaje a Japón</span>
+                </div>
+            </div> 
+            <span class="fas fa-quote-right"></span>
         </div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis incidunt eius nihil rerum dolor
-             nisi aliquid natus exercitationem! Optio a iusto eos cum ratione eius commodi ut placeat libero!
-              Minima.</p>
-              <div class="user">
-            <img src="/viaje/viaje/Viaje-APP/imagenes/persona3.jpg" alt="">
-            <div class="user-info"> 
-                <h3>john deo</h3>
-                
-              </div>
-              </div> 
-              <span class="fas fa-quote-right"></span>
-    </div>
-     <div class="box">
-        <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+        
+        <div class="box">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>
+                "¡El mejor fin de semana en Puerto Vallarta! El precio de la oferta era inigualable y todo fue transparente. Desde el vuelo hasta el check-out, cero problemas. ¡Muy recomendable Remolinos Tours!"
+            </p>
+            <div class="user">
+                <img src="/viaje/viaje/Viaje-APP/imagenes/persona4.jpg" alt="Foto de Jorge R.">
+                <div class="user-info"> 
+                    <h3>Jorge R.</h3>
+                    <span>Escapada a Vallarta</span>
+                </div>
+            </div> 
+            <span class="fas fa-quote-right"></span>
         </div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis incidunt eius nihil rerum dolor
-             nisi aliquid natus exercitationem! Optio a iusto eos cum ratione eius commodi ut placeat libero!
-              Minima.</p>
-              <div class="user">
-            <img src="/viaje/viaje/Viaje-APP/imagenes/persona4.jpg" alt="">
-            <div class="user-info"> 
-                <h3>john deo</h3>
-                
-              </div>
-              </div> 
-              <span class="fas fa-quote-right"></span>
-    </div>
-    
+        
     </div>
     <center>
         <a href="/viaje/viaje/Viaje-APP/componentes/reseñas/reseñas.php" class="btn">

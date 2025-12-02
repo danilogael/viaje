@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config/db.php'; // Ajusta ruta si es necesario
+require $_SERVER['DOCUMENT_ROOT'].'/viaje/viaje/LoginAPI/db.php';
 header('Content-Type: application/json');
 
 if (!isset($_SESSION['user_id'])) {

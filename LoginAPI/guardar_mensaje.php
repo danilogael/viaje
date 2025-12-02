@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require __DIR__ . '/db.php';
+require $_SERVER['DOCUMENT_ROOT'].'/viaje/viaje/LoginAPI/db.php';
 
 $nombre = $_POST['nombre'];
 $correo = $_POST['correo'];

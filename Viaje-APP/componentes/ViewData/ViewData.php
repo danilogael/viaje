@@ -1,20 +1,36 @@
 <?php
 session_start();
+
+// 1. VERIFICACIÓN: Si no está logueado, muestra SweetAlert y sale. (Mantenemos tu lógica original)
 if (!isset($_SESSION['user_id'])) {
-    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-    <script>
-        Swal.fire({
-            icon: 'warning',
-            title: 'Acceso denegado',
-            text: 'Debes iniciar sesión primero',
-            timer: 2000,
-            showConfirmButton: false
-        }).then(() => {
-            window.location.href = '/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php';
-        });
-    </script>";
-    exit;
+  echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+  <script>
+    Swal.fire({
+      icon: 'warning',
+      title: 'Acceso denegado',
+      text: 'Debes iniciar sesión primero',
+      timer: 2000,
+      showConfirmButton: false
+    }).then(() => {
+      window.location.href = '/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php';
+    });
+  </script>";
+  exit;
 }
+
+// 2. 🛡️ VERIFICACIÓN DE ROL Y REDIRECCIÓN DEL ADMINISTRADOR (¡NUEVO BLOQUE!)
+// Si el rol es 'admin', lo enviamos al panel de administración.
+if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin') {
+    
+    // Ruta que confirmaste es la correcta en tu servidor XAMPP:
+    $admin_url = '/viaje/viaje/Viaje-APP/componentes/admin/admin_panel.php'; 
+    
+    // Usamos la redirección por cabeceras (la más rápida y segura)
+    header("Location: " . $admin_url);
+    exit(); // Detiene la ejecución para asegurar la redirección
+}
+
+// Si llega aquí, significa que es un usuario logueado Y NO ES admin (es cliente).
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -39,12 +55,8 @@ if (!isset($_SESSION['user_id'])) {
     <ul class="menu">
   <li><button class="menu-btn active" data-section="info"><i class="fa-solid fa-user"></i> Información personal</button></li>
   <li><button class="menu-btn" data-section="seguridad"><i class="fa-solid fa-lock"></i> Seguridad</button></li>
-  <li><button class="menu-btn" data-section="favoritos"><i class="fa-solid fa-heart"></i> Favoritos</button></li>
-  <li><button class="menu-btn" data-section="recientes"><i class="fa-solid fa-clock-rotate-left"></i> Vistos recientemente</button></li>
-  <li><button class="menu-btn" data-section="reservas"><i class="fa-solid fa-suitcase"></i> Reservaciones</button></li>
   <li><button class="menu-btn" data-section="preferencias"><i class="fa-solid fa-magnifying-glass"></i> Preferencias</button></li>
   <li><button class="menu-btn" data-section="notificaciones"><i class="fa-solid fa-bell"></i> Notificaciones</button></li>
-  <li><button class="menu-btn" data-section="ayuda_contacto"><i class="fa-solid fa-circle-question"></i> Atencion al cliente</button></li>
 </ul>
   </aside>
 
@@ -71,26 +83,7 @@ if (!isset($_SESSION['user_id'])) {
       <button class="btn-edit" onclick="cambiarPassword()">Cambiar contraseña</button>
     </section>
 
-   
-    <section id="favoritos" class="card hidden">
-      <h2>Favoritos</h2>
-      <p class="subtitle">Destinos guardados.</p>
-      <div id="favList">Aún no hay favoritos.</div>
-    </section>
 
-  
-    <section id="recientes" class="card hidden">
-      <h2>Vistos recientemente</h2>
-      <p class="subtitle">Tu historial reciente.</p>
-      <div id="recentList">Sin historial.</div>
-    </section>
-
-  
-    <section id="reservas" class="card hidden">
-      <h2>Reservaciones</h2>
-      <p class="subtitle">Tus reservas aparecerán aquí.</p>
-      <div id="resList">No hay reservas.</div>
-    </section>
  
     <section id="preferencias" class="card hidden">
       <h2>Preferencias</h2>
@@ -104,22 +97,7 @@ if (!isset($_SESSION['user_id'])) {
       <div id="resList">No hay notificaciones.</div>
     </section>
     
-    <section id="ayuda_contacto" class="card hidden">
-      <h2>Contáctanos</h2>
-      <div class="container">
-    <form class="row g-3 mx-auto" style="max-width:700px;">
-      <div class="col-md-6">
-        <input type="text" class="form-control" placeholder="Tu nombre completo" required />
-      </div>
-      <div class="col-md-6">
-        <input type="email" class="form-control" placeholder="Tu correo" required />
-      </div>
-      <div class="col-12">
-        <textarea class="form-control" rows="4" placeholder="Mensaje" required></textarea>
-      </div>
-      <div class="col-12 text-center">
-        <button class="btn btn-primary px-4">Enviar</button>
-      </div>
+   
     </section>
 
   </main>

@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-require_once 'config/db.php';
+require $_SERVER['DOCUMENT_ROOT'].'/viaje/viaje/LoginAPI/db.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {

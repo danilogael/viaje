@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require __DIR__ . '/../db.php';
+require $_SERVER['DOCUMENT_ROOT'].'/viaje/viaje/LoginAPI/db.php';
 
 $user_id = $_SESSION['user_id'];
 
