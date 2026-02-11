@@ -21,7 +21,7 @@ $nombre = $_SESSION['nombre'] ?? 'Usuario';
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/viaje/viaje/Viaje-APP/componentes/header/header.php"); ?>
 
 <section class="products" id="products">
-  <h1 class="titulo-ofertas">Descubre nuestras <span>Ofertas</span></h1>
+  <h1 class="titulo-ofertas">Descubre nuestros <span>Paquetes</span></h1>
   <div class="box-container">
 
         <div class="box">
